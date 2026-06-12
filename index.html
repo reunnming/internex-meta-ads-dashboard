@@ -7,7 +7,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
   <style>
     :root {
-      --bg:#f1f5f9; --surface:#fff; --surface2:#f8fafc; --border:#e2e8f0;
+      --bg:#f1f5f9; --surface:#fff; --surface2:#f8fafc; -border:#e2e8f0;
       --text:#0f172a; --muted:#64748b;
       --accent:#6366f1; --accent-bg:#eef2ff; --accent-bd:#c7d2fe;
       --green:#16a34a; --green-bg:#f0fdf4; --green-bd:#bbf7d0;
@@ -209,6 +209,7 @@
     <option value="ALL">All Accounts</option>
     <option value="WSP">WSP</option>
     <option value="Ruvine">Ruvine</option>
+    <option value="Ruvine SME">Ruvine SME</option>
   </select>
   <div class="vdiv"></div>
   <button class="btn" onclick="applyFilters()">🔄 Apply</button>
@@ -459,9 +460,13 @@ function generateBriefing(rows,G,bm,totals,prodMatrix){
   }
   const wspCpl=avgCplFromRows(rows.filter(r=>r[C.ACCOUNT]==='WSP'));
   const ruvCpl=avgCplFromRows(rows.filter(r=>r[C.ACCOUNT]==='Ruvine'));
-  if(wspCpl&&ruvCpl){
-    const better=wspCpl<ruvCpl?'WSP':'Ruvine';
-    lines.push(`${better} outperforming — RM${Math.min(wspCpl,ruvCpl).toFixed(2)} vs RM${Math.max(wspCpl,ruvCpl).toFixed(2)} CPL.`);
+  const smeCpl=avgCplFromRows(rows.filter(r=>r[C.ACCOUNT]==='Ruvine SME'));
+  // Show best vs rest across all accounts with data
+  const acctCpls=[['WSP',wspCpl],['Ruvine',ruvCpl],['Ruvine SME',smeCpl]].filter(a=>a[1]);
+  if(acctCpls.length>=2){
+    acctCpls.sort((a,b)=>a[1]-b[1]);
+    const best=acctCpls[0],worst=acctCpls[acctCpls.length-1];
+    lines.push(`${best[0]} outperforming — RM${best[1].toFixed(2)} vs RM${worst[1].toFixed(2)} CPL (${worst[0]}).`);
   }
   const urgent=G.pause.length+G.declining.length;
   if(urgent>0) lines.push(`${urgent} ad${urgent>1?'s':''} need immediate action — ${G.pause.length} overspending, ${G.declining.length} declining.`);
