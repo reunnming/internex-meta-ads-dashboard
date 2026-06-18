@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-  <title>Internex · Meta Ads Dashboard</title>
+  <title>Internex Â· Meta Ads Dashboard</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
   <style>
     :root {
-      --bg:#f1f5f9; --surface:#fff; --surface2:#f8fafc; -border:#e2e8f0;
+      --bg:#f1f5f9; --surface:#fff; --surface2:#f8fafc; --border:#e2e8f0;
       --text:#0f172a; --muted:#64748b;
       --accent:#6366f1; --accent-bg:#eef2ff; --accent-bd:#c7d2fe;
       --green:#16a34a; --green-bg:#f0fdf4; --green-bd:#bbf7d0;
@@ -20,7 +20,7 @@
     *{box-sizing:border-box;margin:0;padding:0;}
     body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,sans-serif;font-size:14px;}
 
-    /* ── HEADER ── */
+    /* ââ HEADER ââ */
     .header{background:#fff;border-bottom:1px solid var(--border);padding:12px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;box-shadow:0 1px 3px rgba(0,0,0,.06);}
     .brand{display:flex;align-items:center;gap:10px;}
     .brand-dot{width:9px;height:9px;border-radius:50%;background:var(--accent);}
@@ -28,7 +28,7 @@
     .brand span{color:var(--muted);font-weight:400;}
     #lastUpdated{font-size:11px;color:var(--muted);}
 
-    /* ── CONTROLS ── */
+    /* ââ CONTROLS ââ */
     .controls{background:#fff;border-bottom:1px solid var(--border);padding:10px 24px;display:flex;gap:10px;align-items:center;flex-wrap:wrap;}
     label{font-size:11px;color:var(--muted);font-weight:500;}
     input[type="date"],select{background:#fff;border:1px solid var(--border);color:var(--text);padding:6px 10px;border-radius:7px;font-size:12px;}
@@ -39,10 +39,10 @@
     .btn-ghost:hover{border-color:var(--accent);color:var(--accent);}
     .vdiv{width:1px;height:22px;background:var(--border);}
 
-    /* ── LAYOUT ── */
+    /* ââ LAYOUT ââ */
     .main{padding:20px 24px;max-width:1440px;margin:0 auto;}
 
-    /* ── AI BRIEFING ── */
+    /* ââ AI BRIEFING ââ */
     .briefing{background:linear-gradient(135deg,#eef2ff 0%,#f0fdf4 100%);border:1px solid var(--accent-bd);border-radius:12px;padding:18px 20px;margin-bottom:16px;display:flex;gap:16px;align-items:flex-start;}
     .briefing-icon{font-size:24px;line-height:1;flex-shrink:0;margin-top:2px;}
     .briefing-title{font-size:11px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:.6px;margin-bottom:8px;}
@@ -50,7 +50,7 @@
     .briefing-line{font-size:13px;color:var(--text);line-height:1.5;display:flex;gap:8px;align-items:baseline;}
     .bl-dot{width:6px;height:6px;border-radius:50%;background:var(--accent);flex-shrink:0;margin-top:5px;}
 
-    /* ── ALERT BAR ── */
+    /* ââ ALERT BAR ââ */
     .alert-bar{background:#fff;border:1px solid var(--border);border-left:4px solid var(--red);border-radius:10px;padding:12px 18px;margin-bottom:16px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;box-shadow:0 1px 4px rgba(0,0,0,.04);}
     .alert-count{font-size:28px;font-weight:800;color:var(--red);line-height:1;}
     .alert-label{font-size:12px;color:var(--muted);}
@@ -62,7 +62,7 @@
     .atag-blue{background:var(--blue-bg);color:var(--blue);border-color:var(--blue-bd);}
     .atag-yellow{background:var(--yellow-bg);color:var(--yellow);border-color:var(--yellow-bd);}
 
-    /* ── KPI ── */
+    /* ââ KPI ââ */
     .kpi-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin-bottom:20px;}
     .kpi-card{background:#fff;border:1px solid var(--border);border-radius:10px;padding:14px 16px;box-shadow:0 1px 3px rgba(0,0,0,.04);}
     .kpi-label{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.6px;font-weight:600;margin-bottom:6px;}
@@ -71,13 +71,56 @@
     .kv-green{color:var(--green);} .kv-red{color:var(--red);} .kv-yellow{color:var(--yellow);}
     .kv-blue{color:var(--blue);} .kv-muted{color:var(--muted);}
 
-    /* ── SECTION HEADER ── */
+    /* ââ FUNNEL VISUALIZATION ââ */
+    .funnel-section{margin-bottom:24px;}
+    .funnel-section-hdr{display:flex;align-items:center;gap:8px;margin-bottom:12px;}
+    .funnel-section-hdr h2{font-size:13px;font-weight:700;}
+    .funnel-section-hdr span{font-size:11px;color:var(--muted);}
+    .funnel-container{display:flex;flex-direction:column;align-items:stretch;gap:0;}
+    .funnel-row{display:flex;justify-content:center;}
+    .funnel-row.f-tof{padding:0;}
+    .funnel-row.f-mof{padding:0 9%;}
+    .funnel-row.f-bof{padding:0 20%;}
+    .funnel-card{width:100%;border-radius:12px;padding:16px 20px;display:flex;align-items:center;gap:16px;box-shadow:0 3px 10px rgba(0,0,0,.07);}
+    .funnel-card.f-tof{background:linear-gradient(120deg,#eff6ff,#dbeafe);border:2px solid #93c5fd;}
+    .funnel-card.f-mof{background:linear-gradient(120deg,#f5f3ff,#ede9fe);border:2px solid #c4b5fd;}
+    .funnel-card.f-bof{background:linear-gradient(120deg,#f0fdf4,#dcfce7);border:2px solid #86efac;}
+    .funnel-card.f-empty{background:var(--surface2);border:2px dashed var(--border);opacity:.6;}
+    .funnel-stage-label{display:flex;flex-direction:column;align-items:center;min-width:70px;flex-shrink:0;}
+    .funnel-stage-icon{font-size:22px;line-height:1;margin-bottom:3px;}
+    .funnel-stage-name{font-size:13px;font-weight:800;color:var(--text);}
+    .funnel-stage-sub{font-size:9px;color:var(--muted);text-align:center;margin-top:2px;line-height:1.3;}
+    .funnel-vdiv{width:1px;height:52px;background:rgba(0,0,0,.09);flex-shrink:0;}
+    .funnel-stats{display:flex;flex-wrap:wrap;gap:14px 22px;flex:1;}
+    .funnel-stat{display:flex;flex-direction:column;}
+    .funnel-stat-val{font-size:18px;font-weight:800;line-height:1.1;}
+    .funnel-stat-lbl{font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;font-weight:600;margin-top:2px;}
+    .funnel-badges{display:flex;flex-direction:column;gap:5px;margin-left:auto;flex-shrink:0;}
+    .funnel-badge{font-size:10px;font-weight:700;padding:3px 9px;border-radius:5px;border:1px solid;white-space:nowrap;}
+    .fb-view{background:var(--orange-bg);color:var(--orange);border-color:var(--orange-bd);}
+    .fb-msg{background:var(--accent-bg);color:var(--accent);border-color:var(--accent-bd);}
+    .funnel-arrow{text-align:center;padding:5px 0;font-size:12px;color:var(--muted);opacity:.5;line-height:1;}
+    .funnel-empty-note{font-size:11px;color:var(--muted);}
+    @media(max-width:640px){
+      .funnel-row.f-mof{padding:0 4%;}
+      .funnel-row.f-bof{padding:0 8%;}
+      .funnel-stats{gap:8px 14px;}
+      .funnel-stat-val{font-size:15px;}
+      .funnel-stage-label{min-width:54px;}
+    }
+
+    /* ââ OBJECTIVE BADGES ââ */
+    .obj-badge{font-size:10px;font-weight:700;padding:2px 7px;border-radius:4px;border:1px solid;}
+    .obj-view{background:var(--orange-bg);color:var(--orange);border-color:var(--orange-bd);}
+    .obj-msg{background:var(--accent-bg);color:var(--accent);border-color:var(--accent-bd);}
+
+    /* ââ SECTION HEADER ââ */
     .section-header{display:flex;align-items:center;gap:8px;margin-bottom:10px;margin-top:22px;}
     .section-header h2{font-size:13px;font-weight:700;}
     .section-sub{font-size:11px;color:var(--muted);}
     .count-badge{font-size:11px;background:var(--surface2);border:1px solid var(--border);padding:1px 8px;border-radius:20px;color:var(--muted);font-weight:600;}
 
-    /* ── AD CARDS ── */
+    /* ââ AD CARDS ââ */
     .ad-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:10px;margin-bottom:6px;}
     .ad-card{background:#fff;border:1px solid var(--border);border-radius:10px;padding:14px;border-top:3px solid transparent;box-shadow:0 1px 3px rgba(0,0,0,.04);}
     .ad-card.rising{border-top-color:var(--green);}
@@ -88,7 +131,6 @@
     .ad-card.insufficient{border-top-color:var(--border);}
     .ad-card-header{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:8px;}
     .ad-name{font-size:11px;color:var(--muted);line-height:1.4;flex:1;word-break:break-all;}
-    .ad-id-chip{font-size:9px;color:var(--muted);background:var(--surface2);border:1px solid var(--border);border-radius:4px;padding:1px 5px;flex-shrink:0;font-family:monospace;}
     .trend-badge{display:inline-block;font-size:11px;font-weight:700;padding:3px 9px;border-radius:5px;border:1px solid;margin-bottom:8px;}
     .tb-rising{background:var(--green-bg);color:var(--green);border-color:var(--green-bd);}
     .tb-declining{background:var(--orange-bg);color:var(--orange);border-color:var(--orange-bd);}
@@ -117,41 +159,36 @@
     .ad-action{font-size:11px;color:var(--muted);line-height:1.6;border-top:1px solid var(--border);padding-top:8px;}
     .empty-group{font-size:12px;color:var(--muted);padding:8px 0 16px;}
 
-    /* ── CHARTS ── */
+    /* ââ CHARTS ââ */
     .chart-row{display:grid;grid-template-columns:2fr 1fr;gap:14px;margin-bottom:20px;}
     @media(max-width:768px){.chart-row{grid-template-columns:1fr;}}
     .chart-card{background:#fff;border:1px solid var(--border);border-radius:10px;padding:16px;box-shadow:0 1px 3px rgba(0,0,0,.04);}
     .chart-card h3{font-size:12px;color:var(--muted);font-weight:600;margin-bottom:12px;}
     .chart-wrap{position:relative;height:200px;}
 
-    /* ── PRODUCT SECTION ── */
+    /* ââ PRODUCT SECTION ââ */
     .product-section{margin-bottom:14px;}
-    .product-header{background:#fff;border:1px solid var(--border);border-radius:10px 10px 0 0;padding:16px 20px;display:flex;align-items:center;gap:12px;cursor:pointer;user-select:none;}
+    .product-header{background:#fff;border:1px solid var(--border);border-radius:10px 10px 0 0;padding:14px 18px;display:flex;align-items:center;gap:12px;cursor:pointer;user-select:none;}
     .product-header:hover{background:var(--surface2);}
     .product-name-big{font-size:15px;font-weight:800;color:var(--text);}
-
-    /* BIG STATS in product header */
     .product-kpis{display:flex;gap:0;margin-left:auto;border:1px solid var(--border);border-radius:10px;overflow:hidden;}
-    .pkpi{padding:10px 18px;text-align:center;border-right:1px solid var(--border);background:#fff;}
+    .pkpi{padding:9px 14px;text-align:center;border-right:1px solid var(--border);background:#fff;}
     .pkpi:last-child{border-right:none;}
-    .pkpi-val{font-size:20px;font-weight:800;color:var(--text);line-height:1.1;}
-    .pkpi-lbl{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;font-weight:600;margin-top:2px;}
-    .pkpi-val.green{color:var(--green);}
-    .pkpi-val.red{color:var(--red);}
-    .pkpi-val.yellow{color:var(--yellow);}
-    .pkpi-val.blue{color:var(--blue);}
-
+    .pkpi-val{font-size:17px;font-weight:800;color:var(--text);line-height:1.1;}
+    .pkpi-lbl{font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;font-weight:600;margin-top:2px;}
+    .pkpi-val.green{color:var(--green);} .pkpi-val.red{color:var(--red);}
+    .pkpi-val.yellow{color:var(--yellow);} .pkpi-val.blue{color:var(--blue);} .pkpi-val.orange{color:var(--orange);}
     .product-toggle{font-size:12px;color:var(--muted);margin-left:12px;transition:transform .2s;flex-shrink:0;}
     .product-toggle.open{transform:rotate(180deg);}
     .product-table-wrap{background:#fff;border:1px solid var(--border);border-top:none;border-radius:0 0 10px 10px;overflow:auto;}
 
-    /* ── TABLES ── */
+    /* ââ TABLES ââ */
     table{width:100%;border-collapse:collapse;}
     thead th{background:var(--surface2);padding:9px 14px;text-align:left;font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;font-weight:700;border-bottom:1px solid var(--border);white-space:nowrap;}
     thead th.sortable{cursor:pointer;user-select:none;}
     thead th.sortable:hover{color:var(--accent);background:#eef2ff;}
-    thead th.sort-asc::after{content:' ↑';}
-    thead th.sort-desc::after{content:' ↓';}
+    thead th.sort-asc::after{content:' â';}
+    thead th.sort-desc::after{content:' â';}
     tbody td{padding:9px 14px;border-bottom:1px solid var(--border);font-size:12px;}
     tbody tr:last-child td{border-bottom:none;}
     tbody tr:hover{background:var(--surface2);}
@@ -162,6 +199,10 @@
     .cpl-yellow{background:var(--yellow-bg);color:var(--yellow);border-color:var(--yellow-bd);}
     .cpl-red{background:var(--red-bg);color:var(--red);border-color:var(--red-bd);}
     .cpl-gray{background:var(--surface2);color:var(--muted);border-color:var(--border);}
+    .hook-chip{display:inline-block;padding:2px 8px;border-radius:5px;font-weight:700;font-size:11px;border:1px solid;}
+    .hook-hot{background:var(--green-bg);color:var(--green);border-color:var(--green-bd);}
+    .hook-cold{background:var(--red-bg);color:var(--red);border-color:var(--red-bd);}
+    .hook-ok{background:var(--surface2);color:var(--muted);border-color:var(--border);}
     .funnel-tof{background:var(--blue-bg);color:var(--blue);border:1px solid var(--blue-bd);padding:1px 7px;border-radius:4px;font-size:10px;font-weight:700;}
     .funnel-mof{background:var(--purple-bg);color:var(--purple);border:1px solid var(--purple-bd);padding:1px 7px;border-radius:4px;font-size:10px;font-weight:700;}
     .funnel-bof{background:var(--green-bg);color:var(--green);border:1px solid var(--green-bd);padding:1px 7px;border-radius:4px;font-size:10px;font-weight:700;}
@@ -173,17 +214,13 @@
     .gb-declining{background:var(--orange-bg);color:var(--orange);border-color:var(--orange-bd);}
     .gb-pause{background:var(--red-bg);color:var(--red);border-color:var(--red-bd);}
     .gb-insufficient{background:var(--surface2);color:var(--muted);border-color:var(--border);}
-    .ad-name-cell{max-width:260px;overflow:hidden;text-overflow:ellipsis;white-space:nowraw;font-size:11px;color:var(--muted);}
-
-    /* ── ALL ADS TABLE WRAP ── */
+    .ad-name-cell{max-width:240px;overflow:hidden;text-overflow:ellipsis;white-space:nowraw;font-size:11px;color:var(--muted);}
     .table-wrap{background:#fff;border:1px solid var(--border);border-radius:10px;overflow:auto;box-shadow:0 1px 3px rgba(0,0,0,.04);}
-
-    /* ── AD ID COPY CHIP ── */
     .ad-id-chip{font-size:9px;color:var(--accent);background:var(--accent-bg);border:1px solid var(--accent-bd);border-radius:4px;padding:2px 7px;flex-shrink:0;font-family:monospace;cursor:pointer;user-select:none;transition:background .15s;}
     .ad-id-chip:hover{background:#c7d2fe;}
     .ad-id-chip.copied{background:var(--green-bg);color:var(--green);border-color:var(--green-bd);}
 
-    /* ── STATES ── */
+    /* ââ STATES ââ */
     .state-msg{text-align:center;padding:80px 24px;color:var(--muted);}
     .state-msg h3{font-size:18px;margin-bottom:8px;color:var(--text);}
     .spinner{display:inline-block;width:24px;height:24px;border:2px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:spin .8s linear infinite;margin-bottom:12px;}
@@ -195,7 +232,7 @@
 <div class="header">
   <div class="brand">
     <div class="brand-dot"></div>
-    <h1>Internex <span>· Meta Ads</span></h1>
+    <h1>Internex <span>Â· Meta Ads</span></h1>
   </div>
   <span id="lastUpdated">Loading...</span>
 </div>
@@ -212,8 +249,8 @@
     <option value="Ruvine SME">Ruvine SME</option>
   </select>
   <div class="vdiv"></div>
-  <button class="btn" onclick="applyFilters()">🔄 Apply</button>
-  <button class="btn btn-ghost" onclick="reloadData()">↺ Reload</button>
+  <button class="btn" onclick="applyFilters()">ð Apply</button>
+  <button class="btn btn-ghost" onclick="reloadData()">âº Reload</button>
 </div>
 
 <div class="main" id="main">
@@ -223,10 +260,65 @@
 <script>
 const WEB_APP_URL='https://script.google.com/macros/s/AKfycbx9KpX0KOyD5z6fN-7MWC5XVxhSISQIdFMhgWt2fD-Zi_axgBJchijg2MshOlWazZj3kA/exec';
 const C={DATE:0,ACCOUNT:1,AD_NAME:2,NAMING:3,PRODUCT:4,ANGLE:5,FORMAT:6,FUNNEL:7,AUDIENCE:8,AGE:9,DEST:10,SPEND:11,IMP:12,REACH:13,FREQ:14,CTR:15,CPM:16,CLICKS:17,CPL:18,STATUS:19,HOOK:20,AD_ID:21};
+
+// ââ PRODUCT MAP âââââââââââââââââââââââââââââââââââââââââââââââ
+// Maps short product codes extracted from ad names to display labels
+const PRODUCT_MAP={'JTC':'JTC (éç³è¶)'};
+
 const HOOK_HOT=30,HOOK_COLD=15,FREQ_FATIGUE=3.5;
 let ALL_ROWS=[],charts={},sortState={col:null,dir:'asc'};
 
-// ── INIT ─────────────────────────────────────────────────────
+// ââ AD NAME PARSERS âââââââââââââââââââââââââââââââââââââââââââ
+// Ad name format: {ACCOUNT}-{PRODUCT}-{ANGLE}-{FORMAT}-...__{OBJECTIVE}-{FUNNEL}-...
+// e.g. WSP-JTC-Pain-VID-painpoint-v1-170626__MSG-TOF-INN-3565-MSGIG
+
+function parseProductFromAdName(adName){
+  // 2nd hyphen-segment â product code
+  if(!adName)return null;
+  const parts=adName.split('-');
+  if(parts.length<2)return null;
+  const code=parts[1].toUpperCase();
+  return PRODUCT_MAP[code]||code;
+}
+
+function parseAngleFromAdName(adName){
+  // 3rd hyphen-segment â angle
+  if(!adName)return null;
+  const parts=adName.split('-');
+  return parts.length>=3?parts[2]:null;
+}
+
+function parseFunnelFromAdName(adName){
+  // After __ separator: {OBJ}-{FUNNEL}-... â 2nd segment is funnel
+  if(!adName)return null;
+  const m=adName.match(/__+[A-Za-z]+-([A-Za-z]+)-/);
+  if(m){
+    const f=m[1].toUpperCase();
+    if(f.startsWith('TOF'))return'TOF';
+    if(f.startsWith('MOF'))return'MOF';
+    if(f.startsWith('BOF'))return'BOF';
+  }
+  return null;
+}
+
+function getObjective(adName){
+  // After __ separator: first segment is objective (VIEW or MSG/others)
+  if(!adName)return'MSG';
+  const m=adName.match(/__+([A-Za-z]+)-/);
+  if(m&&m[1].toUpperCase()==='VIEW')return'VIEW';
+  return'MSG';
+}
+
+function resolveProduct(sheetProduct,adName){
+  // Use sheet value if present, else parse from ad name
+  if(sheetProduct&&sheetProduct.trim()){
+    const p=sheetProduct.trim();
+    return PRODUCT_MAP[p.toUpperCase()]||p;
+  }
+  return parseProductFromAdName(adName)||'Unknown';
+}
+
+// ââ INIT ââââââââââââââââââââââââââââââââââââââââââââââââââââââ
 window.addEventListener('DOMContentLoaded',()=>{setDefaultDates();loadData();});
 function setDefaultDates(){
   const t=new Date(),a=new Date(t),b=new Date(t);
@@ -237,7 +329,7 @@ function setDefaultDates(){
 function fmt(d){return d.toISOString().slice(0,10);}
 function reloadData(){ALL_ROWS=[];loadData();}
 
-// ── JSONP LOAD ───────────────────────────────────────────────
+// ââ JSONP LOAD ââââââââââââââââââââââââââââââââââââââââââââââââ
 function loadData(){
   document.getElementById('main').innerHTML=`<div class="state-msg"><div class="spinner"></div><h3>Loading...</h3></div>`;
   const cb='gs_'+Date.now();
@@ -246,7 +338,7 @@ function loadData(){
     clearTimeout(t);delete window[cb];
     try{
       ALL_ROWS=(resp.rows||[]).filter(r=>r[C.DATE]);
-      document.getElementById('lastUpdated').textContent='Updated '+new Date().toLocaleTimeString('en-MY',{hour12:false});
+      document.getElementById('lastUpdated').textContent='Updated '+new Date().toLocaleTimeString('en-MY',{"hour12":false});
       applyFilters();
     }catch(e){showError(e.message);}
   };
@@ -261,14 +353,13 @@ function applyFilters(){
   const to=document.getElementById('dateTo').value;
   const acct=document.getElementById('accountFilter').value;
   const rows=ALL_ROWS.filter(r=>{
-    const d=r[C.DATE].slice(0,10);
+    const d=r[C.DATE],slice(0,10);
     return d>=from&&d<=to&&(acct==='ALL'||r[C.ACCOUNT]===acct);
   });
   renderAll(rows,from,to);
 }
 
-// ── FUNNEL NORMALIZER ────────────────────────────────────────
-// Treat "TOF", "TOF-COLD", "TOF (COLD)", "TOF_COLD" all as "TOF"
+// ââ FUNNEL NORMALIZER âââââââââââââââââââââââââââââââââââââââââ
 function normalizeFunnel(f){
   if(!f)return'TOF';
   const u=f.toUpperCase().replace(/[-_()\s]/g,'');
@@ -278,34 +369,26 @@ function normalizeFunnel(f){
   return f.toUpperCase();
 }
 
-// ── COPY AD ID ───────────────────────────────────────────────
-function copyAdId(fullId, el){
+// ââ COPY AD ID ââââââââââââââââââââââââââââââââââââââââââââââââ
+function copyAdId-&fullId,el){
   navigator.clipboard.writeText(fullId).then(()=>{
-    el.textContent='✓ Copied!';
-    el.classList.add('copied');
-    setTimeout(()=>{
-      el.textContent='📋 '+fullId;
-      el.classList.remove('copied');
-    },1800);
+    el.textContent='â Copied!';el.classList.add('copied');
+    setTimeout(()=>{el.textContent='ð '+fullId;el.classList.remove('copied');},1800);
   }).catch(()=>{
-    // fallback
     const ta=document.createElement('textarea');
-    ta.value=fullId; document.body.appendChild(ta);
-    ta.select(); document.execCommand('copy');
-    document.body.removeChild(ta);
-    el.textContent='✓ Copied!'; el.classList.add('copied');
-    setTimeout(()=>{el.textContent='📋 '+fullId;el.classList.remove('copied');},1800);
+    ta.value=fullId;document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);
+    el.textContent='â Copied!';el.classList.add('copied');
+    setTimeout(()=>{el.textContent='ð '+fullId;el.classList.remove('copied');},1800);
   });
 }
 
-// ── LEADS HELPER ─────────────────────────────────────────────
-// leads = Spend / CPL per row — derived, no separate column needed
+// ââ LEADS HELPER ââââââââââââââââââââââââââââââââââââââââââââââ
 function rowLeads(r){
-  const s=parseFloat(r[C.SPEND])||0, c=parseFloat(r[C.CPL])||0;
+  const s=parseFloat(r[C.SPEND])||0,c=parseFloat(r[C.CPL])||0;
   return c>0?s/c:0;
 }
 
-// ── BUILD AD PROFILES ────────────────────────────────────────
+// ââ BUILD AD PROFILES âââââââââââââââââââââââââââââââââââââââââ
 function buildAdProfiles(rows){
   const byId={};
   rows.forEach(r=>{
@@ -318,36 +401,71 @@ function buildAdProfiles(rows){
     const latest=adRows[adRows.length-1];
     const spend=adRows.reduce((s,r)=>s+(parseFloat(r[C.SPEND])||0),0);
     const leads=adRows.reduce((s,r)=>s+rowLeads(r),0);
-    const cpls=adRows.map(r=>parseFloat(r[C.CPL])||0).filter(v=>v>0);
-    const avgCpl=leads>0?spend/leads:null;  // weighted avg
+    const impressions=adRows.reduce((s,r)=>s+(parseInt(r[C.IMP])||0),0);
+    const clicks=adRows.reduce((s,r)=>s+(parseInt(r[C.CLICKS])||0),0);
+    const cpm=impressions>0?spend/impressions*1000:null;
+    const freq=parseFloat(latest[C.FREQ])||0;
+    const avgCpl=leads>0?spend/leads:null;
     const hooks=adRows.map(r=>parseFloat(r[C.HOOK])||0).filter(v=>v>0);
     const avgHook=hooks.length?hooks.reduce((s,v)=>s+v,0)/hooks.length:null;
-    const clicks=adRows.reduce((s,r)=>s+(parseInt(r[C.CLICKS])||0),0);
-    const freq=parseFloat(latest[C.FREQ])||0;
+
+    // Detect objective from ad name
+    const objective=getObjective(latest[C.AD_NAME]);
+
+    // Objective-aware trend detection
     let trend='stable';
-    if(adRows.length>=4&&cpls.length>=2){
-      const mid=Math.ceil(adRows.length/2);
-      const fh=adRows.slice(0,mid).map(r=>parseFloat(r[C.CPL])||0).filter(v=>v>0);
-      const sh=adRows.slice(mid).map(r=>parseFloat(r[C.CPL])||0).filter(v=>v>0);
-      if(fh.length&&sh.length){
-        const aF=fh.reduce((s,v)=>s+v,0)/fh.length, aS=sh.reduce((s,v)=>s+v,0)/sh.length;
+    if(objective==='VIEW'){
+      if(hooks.length>=3){
+        const mid=Math.ceil(hooks.length/2);
+        const fH=hooks.slice(0,mid),sH=hooks.slice(mid);
+        const aF=fH.reduce((s,v)=>s+v,0)/fH.length,aS=sH.reduce((s,v)=>s+v,0)/sH.length;
         const chg=(aS-aF)/aF;
-        if(chg<-0.15)trend='rising';
-        else if(chg>0.20)trend='declining';
+        if(chg>0.15)trend='rising';
+        else if(chg<-0.20)trend='declining';
       }
-    }else if(adRows.length<=2)trend='new';
-    // Use the most recent row that has valid product/naming (handles renamed ads correctly)
+    }else{
+      const cpls=adRows.map(r=>parseFloat(r[C.CPL])||0).filter(v=>v>0);
+      if(adRows.length>=4&&cpls.length>=2){
+        const mid=Math.ceil(adRows.length/2);
+        const fh=adRows.slice(0,mid).map(r=>parseFloat(r[C.CPL])||0).filter(v=>v>0);
+        const sh=adRows.slice(mid).map(r=>parseFloat(r[C.CPL])||0).filter(v=>v>0);
+        if(fh.length&&sh.length){
+          const aF=fh.reduce((s,v)=>s+v,0)/fh.length,aS=sh.reduce((s,v)=>s+v,0)/sh.length;
+          const chg=(aS-aF)/aF;
+          if(chg<-0.15)trend='rising';
+          else if(chg>0.20)trend='declining';
+        }
+      }else if(adRows.length<=2)trend='new';
+    }
+
+    // Resolve product/angle/funnel: sheet data preferred, ad name as fallback
     const namedRow=[...adRows].reverse().find(r=>r[C.PRODUCT])||latest;
-    return{id,spend,leads,avgCpl,avgHook,clicks,freq,trend,
+    const product=resolveProduct(namedRow[C.PRODUCT]||latest[C.PRODUCT],latest[C.AD_NAME]);
+    const rawAngle=namedRow[C.ANGLE]||latest[C.ANGLE];
+    const angle=rawAngle||parseAngleFromAdName(latest[C.AD_NAME])||'â';
+    const rawFunnel=namedRow[C.FUNNEL]||latest[C.FUNNEL];
+    const funnel=normalizeFunnel(rawFunnel||parseFunnelFromAdName(latest[C.AD_NAME])||'TOF');
+
+    return{id,spend,leads,avgCpl,avgHook,clicks,impressions,cpm,freq,trend,objective,
       fatigued:freq>=FREQ_FATIGUE,days:adRows.length,
       name:latest[C.AD_NAME],account:latest[C.ACCOUNT]||adRows[0][C.ACCOUNT],
-      product:namedRow[C.PRODUCT]||'Unknown',angle:namedRow[C.ANGLE]||'—',
-      format:namedRow[C.FORMAT]||'—',funnel:normalizeFunnel(namedRow[C.FUNNEL]),
-      status:latest[C.STATUS]||'—'};
+      product,angle,format:namedRow[C.FORMAT]||'â',funnel,status:latest[C.STATUS]||'â'};
   });
 }
 
+// ââ CLASSIFY AD (OBJECTIVE-AWARE) ââââââââââââââââââââââââââââ
 function classifyAd(ad,bm){
+  if(ad.objective==='VIEW'){
+    if(ad.spend<5)return'insufficient';
+    if(ad.avgHook===null)return'insufficient';
+    if(ad.trend==='rising')return'rising';
+    if(ad.avgHook>=HOOK_HOT)return'solid';
+    if(ad.trend==='declining'&&ad.spend>=15)return'declining';
+    if(ad.avgHook<HOOK_COLD&&ad.spend>=25)return'pause';
+    if(ad.avgHook<HOOK_COLD)return'declining';
+    return'monitor';
+  }
+  // MSG / Lead Gen
   if(!ad.avgCpl||ad.spend<5)return'insufficient';
   if(ad.trend==='rising'&&ad.avgCpl<=(bm||999)*1.15)return'rising';
   if(ad.fatigued||ad.trend==='declining')return'declining';
@@ -356,28 +474,40 @@ function classifyAd(ad,bm){
   return'monitor';
 }
 
+// ââ ACTION TEXT (OBJECTIVE-AWARE) âââââââââââââââââââââââââââââ
 function actionText(ad,group,bm){
+  if(ad.objective==='VIEW'){
+    const h=ad.avgHook?ad.avgHook.toFixed(0)+'%':'â';
+    if(group==='rising')return`Hook Rate improving to ${h} â creative gaining momentum. Scale budget 30â50%.`;
+    if(group==='solid')return`Hook Rate ${h} â strong scroll-stop. Maintain or scale; test new audiences.`;
+    if(group==='monitor')return`Hook Rate ${h} â acceptable. Give 2â3 more days before deciding.`;
+    if(group==='declining')return`Hook Rate ${h} â hook weakening. Test new thumbnail or first-3-second concept.`;
+    if(group==='pause')return`Hook Rate ${h} â poor hook with RM${ad.spend.toFixed(0)} spent. Replace creative concept.`;
+    return`Only RM${ad.spend.toFixed(0)} spent â collect 2â3 more days of data before evaluating.`;
+  }
+  // MSG
   const pct=bm&&ad.avgCpl?Math.round(Math.abs(ad.avgCpl-bm)/bm*100):0;
-  if(group==='rising')return`CPL improving — down ${pct}% vs start. Scale budget 30–50%.`;
-  if(group==='declining')return ad.fatigued?`Freq ${ad.freq.toFixed(1)} — audience fatigued. Rotate creative or expand targeting.`:`CPL rising ${pct}% vs start. Pause or swap creative now.`;
-  if(group==='pause')return`CPL ${pct}% above benchmark (RM${ad.avgCpl?.toFixed(2)}). Pause — RM${ad.spend.toFixed(0)} spent at poor return.`;
+  if(group==='rising')return`CPL improving â down ${pct}% vs start. Scale budget 30â50%.`;
+  if(group==='declining')return ad.fatigued?`Freq ${ad.freq.toFixed(1)} â audience fatigued. Rotate creative or expand targeting.`:`CPL rising ${pct}% vs start. Pause or swap creative now.`;
+  if(group==='pause')return`CPL ${pct}% above benchmark (RM${ad.avgCpl?.toFixed(2)}). Pause â RM${ad.spend.toFixed(0)} spent at poor return.`;
   if(group==='solid')return`${pct}% below benchmark. Maintain budget, test new audiences.`;
-  if(group==='monitor')return`Within normal range. Collect 3–5 more days before scaling or cutting.`;
-  return`Only RM${ad.spend.toFixed(0)} spent — push to RM30+ before judging.`;
+  if(group==='monitor')return`Within normal range. Collect 3â5 more days before scaling or cutting.`;
+  return`Only RM${ad.spend.toFixed(0)} spent â push to RM30+ before judging.`;
 }
 
-// ── KPI TOTALS ───────────────────────────────────────────────
+// ââ KPI TOTALS ââââââââââââââââââââââââââââââââââââââââââââââââ
 function kpiTotals(rows){
-  let spend=0,leads=0,clicks=0;
+  let spend=0,leads=0,clicks=0,impressions=0;
   const ads=new Set(),dates=new Set();
   rows.forEach(r=>{
     spend+=parseFloat(r[C.SPEND])||0;
     leads+=rowLeads(r);
     clicks+=parseInt(r[C.CLICKS])||0;
+    impressions+=parseInt(r[C.IMP])||0;
     ads.add(r[C.AD_ID]||r[C.AD_NAME]);
     dates.add(r[C.DATE].slice(0,10));
   });
-  return{spend,leads,avgCpl:leads>0?spend/leads:null,clicks,adCount:ads.size,days:dates.size};
+  return{spend,leads,avgCpl:leads>0?spend/leads:null,clicks,impressions,adCount:ads.size,days:dates.size};
 }
 
 function avgCplFromRows(rows){
@@ -386,42 +516,51 @@ function avgCplFromRows(rows){
   return d>0?n/d:null;
 }
 
-// ── PRODUCT MATRIX ───────────────────────────────────────────
+// ââ PRODUCT MATRIX ââââââââââââââââââââââââââââââââââââââââââââ
 function buildProductMatrix(rows){
-  // Pre-resolve Ad ID → latest valid product/angle/funnel metadata.
-  // Ads renamed mid-period: old rows (NO naming) get resolved to current product.
+  // Build ad-level metadata: prefer sheet data, fall back to ad name parse
   const sortedForMeta=[...rows].sort((a,b)=>a[C.DATE].localeCompare(b[C.DATE]));
   const adMeta={};
   sortedForMeta.forEach(r=>{
-    if(!r[C.PRODUCT])return; // skip rows without naming
     const id=r[C.AD_ID]||r[C.AD_NAME];
-    adMeta[id]={product:r[C.PRODUCT],angle:r[C.ANGLE]||'—',funnel:r[C.FUNNEL]};
+    const sheetProduct=r[C.PRODUCT];
+    const product=resolveProduct(sheetProduct,r[C.AD_NAME]);
+    const rawFunnel=r[C.FUNNEL]||parseFunnelFromAdName(r[C.AD_NAME]);
+    const rawAngle=r[C.ANGLE]||parseAngleFromAdName(r[C.AD_NAME]);
+    // Sheet product takes priority; always overwrite with newer rows
+    if(sheetProduct||!adMeta[id]){
+      adMeta[id]={product,angle:rawAngle||'â',funnel:rawFunnel};
+    }
   });
 
   const byProd={};
   rows.forEach(r=>{
     const id=r[C.AD_ID]||r[C.AD_NAME];
     const meta=adMeta[id]||{};
-    const prod=meta.product||r[C.PRODUCT]||'Unknown';
-    const funnel=normalizeFunnel(meta.funnel||r[C.FUNNEL]);
-    const angle=meta.angle||r[C.ANGLE]||'—';
-    const key=`${funnel}||${angle}`;
-    if(!byProd[prod])byProd[prod]={product:prod,totalSpend:0,totalLeads:0,ads:new Set(),angles:{}};
+    const prod=meta.product||resolveProduct(r[C.PRODUCT],r[C.AD_NAME]);
+    const rawFunnel=meta.funnel||r[C.FUNNEL]||parseFunnelFromAdName(r[C.AD_NAME]);
+    const funnel=normalizeFunnel(rawFunnel);
+    const angle=meta.angle||r[C.ANGLE]||parseAngleFromAdName(r[C.AD_NAME])||'â';
+    const objective=getObjective(r[C.AD_NAME]);
+    const key=`${funnel}||${angle}||${objective}`;
+
+    if(!byProd[prod])byProd[prod]={product:prod,totalSpend:0,totalLeads:0,ads:new Set(),angles:{},hookN:0,hookD:0};
     const p=byProd[prod];
-    const adId=r[C.AD_ID]||r[C.AD_NAME];
-    const spend=parseFloat(r[C.SPEND])||0, leads=rowLeads(r);
-    p.totalSpend+=spend; p.totalLeads+=leads;
-    p.ads.add(adId);
-    if(!p.angles[key])p.angles[key]={funnel,angle,spend:0,leads:0,clicks:0,imp:0,hookN:0,hookD:0,ads:new Set()};
+    const spend=parseFloat(r[C.SPEND])||0,leads=rowLeads(r);
+    p.totalSpend+=spend;p.totalLeads+=leads;p.ads.add(id);
+    const hook=parseFloat(r[C.HOOK]);if(hook>0){p.hookN+=hook;p.hookD++;}
+
+    if(!p.angles[key])p.angles[key]={funnel,angle,objective,spend:0,leads:0,clicks:0,imp:0,hookN:0,hookD:0,ads:new Set()};
     const g=p.angles[key];
-    g.ads.add(adId);
-    g.spend+=spend; g.leads+=leads;
-    g.imp+=parseInt(r[C.IMP])||0; g.clicks+=parseInt(r[C.CLICKS])||0;
-    const hook=parseFloat(r[C.HOOK]);if(hook>0){g.hookN+=hook;g.hookD++;}
+    g.ads.add(id);g.spend+=spend;g.leads+=leads;
+    g.imp+=parseInt(r[C.IMP])||0;g.clicks+=parseInt(r[C.CLICKS])||0;
+    if(hook>0){g.hookN+=hook;g.hookD++;}
   });
+
   return Object.values(byProd).sort((a,b)=>b.totalSpend-a.totalSpend).map(p=>{
+    const avgHook=p.hookD>0?p.hookN/p.hookD:null;
     const rows2=Object.values(p.angles).map(g=>({
-      funnel:g.funnel,angle:g.angle,adCount:g.ads.size,
+      funnel:g.funnel,angle:g.angle,objective:g.objective,adCount:g.ads.size,
       spend:g.spend,leads:g.leads,
       avgCpl:g.leads>0?g.spend/g.leads:null,
       avgHook:g.hookD>0?g.hookN/g.hookD:null,
@@ -429,14 +568,47 @@ function buildProductMatrix(rows){
     })).sort((a,b)=>{
       const fa=['TOF','MOF','BOF'].indexOf(a.funnel),fb=['TOF','MOF','BOF'].indexOf(b.funnel);
       if(fa!==fb)return fa-fb;
+      if(a.objective!==b.objective)return a.objective==='VIEW'?-1:1;
       return(!a.avgCpl&&!b.avgCpl)?b.spend-a.spend:!a.avgCpl?1:!b.avgCpl?-1:a.avgCpl-b.avgCpl;
     });
-    return{product:p.product,totalSpend:p.totalSpend,totalLeads:p.totalLeads,
+    return{product:p.product,totalSpend:p.totalSpend,totalLeads:p.totalLeads,avgHook,
       adCount:p.ads.size,avgCpl:p.totalLeads>0?p.totalSpend/p.totalLeads:null,rows:rows2};
   });
 }
 
-// ── CPL BY DAY ───────────────────────────────────────────────
+// ââ FUNNEL DATA âââââââââââââââââââââââââââââââââââââââââââââââ
+function buildFunnelData(rows){
+  const stages={
+    TOF:{spend:0,leads:0,imp:0,clicks:0,hookN:0,hookD:0,ads:new Set(),viewAds:new Set(),msgAds:new Set()},
+    MOF:{spend:0,leads:0,imp:0,clicks:0,hookN:0,hookD:0,ads:new Set(),viewAds:new Set(),msgAds:new Set()},
+    BOF:{spend:0,leads:0,imp:0,clicks:0,hookN:0,hookD:0,ads:new Set(),viewAds:new Set(),msgAds:new Set()}
+  };
+  rows.forEach(r=>{
+    const id=r[C.AD_ID]||r[C.AD_NAME];
+    const rawFunnel=r[C.FUNNEL]||parseFunnelFromAdName(r[C.AD_NAME]);
+    const funnel=normalizeFunnel(rawFunnel);
+    const s=stages[funnel];if(!s)return;
+    const spend=parseFloat(r[C.SPEND])||0,leads=rowLeads(r);
+    s.ads.add(id);s.spend+=spend;s.leads+=leads;
+    s.imp+=parseInt(r[C.IMP])||0;s.clicks+=parseInt(r[C.CLICKS])||0;
+    const hook=parseFloat(r[C.HOOK]);if(hook>0){s.hookN+=hook;s.hookD++;}
+    const obj=getObjective(r[C.AD_NAME]);
+    if(obj==='VIEW')s.viewAds.add(id);else s.msgAds.add(id);
+  });
+  return['TOF','MOF','BOF'].map(f=>{
+    const s=stages[f];
+    return{
+      funnel:f,adCount:s.ads.size,spend:s.spend,leads:s.leads,
+      avgCpl:s.leads>0?s.spend/s.leads:null,
+      avgHook:s.hookD>0?s.hookN/s.hookD:null,
+      impressions:s.imp,clicks:s.clicks,
+      cpm:s.imp>0?s.spend/s.imp*1000:null,
+      viewAdCount:s.viewAds.size,msgAdCount:s.msgAds.size
+    };
+  });
+}
+
+// ââ CPL BY DAY ââââââââââââââââââââââââââââââââââââââââââââââââ
 function buildDailyCpl(rows){
   const byDate={};
   rows.forEach(r=>{
@@ -449,67 +621,145 @@ function buildDailyCpl(rows){
   return{keys,cpls:keys.map(d=>byDate[d].leads>0?+(byDate[d].spend/byDate[d].leads).toFixed(2):null)};
 }
 
-// ── AI BRIEFING ──────────────────────────────────────────────
+// ââ AI BRIEFING âââââââââââââââââââââââââââââââââââââââââââââââ
 function generateBriefing(rows,G,bm,totals,prodMatrix){
   const lines=[];
+  const msgRows=rows.filter(r=>getObjective(r[C.AD_NAME])==='MSG');
+  const viewRows=rows.filter(r=>getObjective(r[C.AD_NAME])==='VIEW');
+  const msgLeads=msgRows.reduce((s,r)=>s+rowLeads(r),0);
+  const msgSpend=msgRows.reduce((s,r)=>s+(parseFloat(r[C.SPEND])||0),0);
+
   if(bm){
-    const lvl=bm<12?'strong — below RM12 target 👍':bm>18?'above RM18 — review spend ⚠️':'within acceptable range';
-    lines.push(`Team CPL is RM${bm.toFixed(2)} (${Math.round(totals.leads)} leads from RM${totals.spend.toFixed(0)} spend) — ${lvl}.`);
-  }else{
-    lines.push('Not enough CPL data — keep running ads for 3+ days.');
+    const lvl=bm<12?'strong â below RM12 target ð':bm>18?'above RM18 â review spend â ï¸':'within acceptable range';
+    lines.push(`Lead Gen CPL: RM${bm.toFixed(2)} (${Math.round(msgLeads)} leads Â· RM${msgSpend.toFixed(0)} spend) â ${lvl}.`);
+  }else if(totals.spend>0){
+    lines.push('No CPL data yet â keep Lead Gen ads running 3+ days.');
   }
-  const wspCpl=avgCplFromRows(rows.filter(r=>r[C.ACCOUNT]==='WSP'));
-  const ruvCpl=avgCplFromRows(rows.filter(r=>r[C.ACCOUNT]==='Ruvine'));
-  const smeCpl=avgCplFromRows(rows.filter(r=>r[C.ACCOUNT]==='Ruvine SME'));
-  // Show best vs rest across all accounts with data
+
+  if(viewRows.length>0){
+    const viewHooks=viewRows.map(r=>parseFloat(r[C.HOOK])||0).filter(v=>v>0);
+    const viewAdIds=new Set(viewRows.map(r=>r[C.AD_ID]||r[C.AD_NAME]));
+    if(viewHooks.length>0){
+      const avgH=viewHooks.reduce((s,v)=>s+v,0)/viewHooks.length;
+      const note=avgH>=HOOK_HOT?'ð¥ strong â consider scaling':avgH<HOOK_COLD?'âï¸ weak â test new hooks':'ð£ acceptable';
+      lines.push(`Video Views (TOF): ${viewAdIds.size} ads Â· avg Hook Rate ${avgH.toFixed(1)}% ${note}.`);
+    }
+  }
+
+  const wspCpl=avgCplFromRows(msgRows.filter(r=>r[C.ACCOUNT]==='WSP'));
+  const ruvCpl=avgCplFromRows(msgRows.filter(r=>r[C.ACCOUNT]==='Ruvine'));
+  const smeCpl=avgCplFromRows(msgRows.filter(r=>r[C.ACCOUNT]==='Ruvine SME'));
   const acctCpls=[['WSP',wspCpl],['Ruvine',ruvCpl],['Ruvine SME',smeCpl]].filter(a=>a[1]);
   if(acctCpls.length>=2){
     acctCpls.sort((a,b)=>a[1]-b[1]);
     const best=acctCpls[0],worst=acctCpls[acctCpls.length-1];
-    lines.push(`${best[0]} outperforming — RM${best[1].toFixed(2)} vs RM${worst[1].toFixed(2)} CPL (${worst[0]}).`);
+    lines.push(`${best[0]} leading â RM${best[1].toFixed(2)} vs RM${worst[1].toFixed(2)} CPL (${worst[0]}).`);
   }
   const urgent=G.pause.length+G.declining.length;
-  if(urgent>0) lines.push(`${urgent} ad${urgent>1?'s':''} need immediate action — ${G.pause.length} overspending, ${G.declining.length} declining.`);
-  else lines.push('No urgent pauses — portfolio health is good.');
+  if(urgent>0)lines.push(`${urgent} ad${urgent>1?'s':''} need immediate action â ${G.pause.length} overspending, ${G.declining.length} declining.`);
+  else lines.push('No urgent pauses â portfolio health is good.');
   if(G.rising.length>0){
-    const top=[...G.rising].sort((a,b)=>a.avgCpl-b.avgCpl)[0];
-    lines.push(`🚀 Scale now: "${top.angle}" angle (${top.product}) at RM${top.avgCpl?.toFixed(2)} CPL — trending down.`);
+    const top=[...G.rising].sort((a,b)=>(a.avgCpl||99)-(b.avgCpl||99))[0];
+    const metric=top.objective==='VIEW'?`Hook ${top.avgHook?.toFixed(0)}%`:`RM${top.avgCpl?.toFixed(2)} CPL`;
+    lines.push(`ð Scale now: "${top.angle}" (${top.product}) Â· ${metric} trending up.`);
   }
-  const bestRow=prodMatrix.flatMap(p=>p.rows).filter(r=>r.avgCpl).sort((a,b)=>a.avgCpl-b.avgCpl)[0];
-  if(bestRow) lines.push(`Best angle: "${bestRow.angle}" (${bestRow.funnel}) → RM${bestRow.avgCpl.toFixed(2)} CPL, ${Math.round(bestRow.leads)} leads.`);
   return lines;
 }
 
-// ── RENDER ───────────────────────────────────────────────────
+// ââ RENDER FUNNEL âââââââââââââââââââââââââââââââââââââââââââââ
+function renderFunnel(funnelData,bm){
+  const cfg={
+    TOF:{icon:'ð¯',label:'TOF',sub:'Cold Audience',cls:'f-tof'},
+    MOF:{icon:'ð¤',label:'MOF',sub:'Warm Audience',cls:'f-mof'},
+    BOF:{icon:'ð',label:'BOF',sub:'Retargeting',cls:'f-bof'}
+  };
+  let html='<div class="funnel-container">';
+  funnelData.forEach((stage,i)=>{
+    const c=cfg[stage.funnel];if(!c)return;
+    const isEmpty=stage.adCount===0;
+    const cplCls=!stage.avgCpl?'kv-muted':stage.avgCpl<(bm||99)*0.88?'kv-green':stage.avgCpl>(bm||0)*1.3?'kv-red':'kv-yellow';
+    const hookCls=!stage.avgHook?'kv-muted':stage.avgHook>=HOOK_HOT?'kv-green':stage.avgHook<HOOK_COLD?'kv-red':'kv-yellow';
+    if(i>0)html+=`<div class="funnel-arrow">â¼ â¼ â¼</div>`;
+    html+=`<div class="funnel-row ${c.cls}">
+      <div class="funnel-card ${c.cls}${isEmpty?' f-empty':''}">
+        <div class="funnel-stage-label">
+          <div class="funnel-stage-icon">${c.icon}</div>
+          <div class="funnel-stage-name">${c.label}</div>
+          <div class="funnel-stage-sub">${c.sub}</div>
+        </div>
+        <div class="funnel-vdiv"></div>
+        <div class="funnel-stats">
+          <div class="funnel-stat">
+            <div class="funnel-stat-val kv-muted">${stage.adCount}</div>
+            <div class="funnel-stat-lbl">Ads</div>
+          </div>
+          <div class="funnel-stat">
+            <div class="funnel-stat-val kv-blue">RM${stage.spend.toFixed(0)}</div>
+            <div class="funnel-stat-lbl">Spend</div>
+          </div>
+          ${stage.avgCpl?`<div class="funnel-stat">
+            <div class="funnel-stat-val ${cplCls}">RM${stage.avgCpl.toFixed(2)}</div>
+            <div class="funnel-stat-lbl">Avg CPL</div>
+          </div>`:''}
+          ${stage.leads>0?`<div class="funnel-stat">
+            <div class="funnel-stat-val kv-green">${Math.round(stage.leads)}</div>
+            <div class="funnel-stat-lbl">Leads</div>
+          </div>`:''}
+          ${stage.avgHook?`<div class="funnel-stat">
+            <div class="funnel-stat-val ${hookCls}">${stage.avgHook.toFixed(1)}%</div>
+            <div class="funnel-stat-lbl">Hook Rate</div>
+          </div>`:''}
+          ${stage.cpm?`<div class="funnel-stat">
+            <div class="funnel-stat-val kv-muted">RM${stage.cpm.toFixed(2)}</div>
+            <div class="funnel-stat-lbl">CPM</div>
+          </div>`:''}
+        </div>
+        <div class="funnel-badges">
+          ${stage.viewAdCount>0?`<div class="funnel-badge fb-view">â¶ VIEW &nbsp;${stage.viewAdCount} ads</div>`:''}
+          ${stage.msgAdCount>0?`<div class="funnel-badge fb-msg">ð¬ MSG &nbsp;${stage.msgAdCount} ads</div>`:''}
+          ${isEmpty?`<div class="funnel-empty-note">No ads this period</div>`:''}
+        </div>
+      </div>
+    </div>`;
+  });
+  html+='</div>';
+  return html;
+}
+
+// ââ RENDER ALL ââââââââââââââââââââââââââââââââââââââââââââââââ
 function renderAll(rows){
   const main=document.getElementById('main');
-  if(!rows.length){main.innerHTML=`<div class="state-msg"><h3>No data for this period</h3></div>`;return;}
+  if(!rows.length){main.innerHTML<`<div class="state-msg"><h3>No data for this period</h3></div>`;return;}
   const profiles=buildAdProfiles(rows);
   const totals=kpiTotals(rows);
-  const bm=totals.avgCpl;
+  const msgRows=rows.filter(r=>getObjective(r[C.AD_NAME])==='MSG');
+  const bm=avgCplFromRows(msgRows);
   const classified=profiles.map(ad=>{const group=classifyAd(ad,bm);return{...ad,group,action:actionText(ad,group,bm)};});
   const G={
-    rising:classified.filter(a=>a.group==='rising').sort((a,b)=>a.avgCpl-b.avgCpl),
+    rising:classified.filter(a=>a.group==='rising').sort((a,b)=>(a.avgCpl||99)-(b.avgCpl||99)),
     declining:classified.filter(a=>a.group==='declining').sort((a,b)=>b.spend-a.spend),
     pause:classified.filter(a=>a.group==='pause').sort((a,b)=>b.spend-a.spend),
-    solid:classified.filter(a=>a.group==='solid').sort((a,b)=>a.avgCpl-b.avgCpl),
+    solid:classified.filter(a=>a.group==='solid').sort((a,b)=>(a.avgCpl||99)-(b.avgCpl||99)),
     monitor:classified.filter(a=>a.group==='monitor').sort((a,b)=>b.spend-a.spend),
     insufficient:classified.filter(a=>a.group==='insufficient')
   };
   const prodMatrix=buildProductMatrix(rows);
-  const dailyData=buildDailyCpl(rows);
+  const funnelData=buildFunnelData(rows);
+  const dailyData=buildDailyCpl(msgRows);
   const briefingLines=generateBriefing(rows,G,bm,totals,prodMatrix);
   const urgent=G.pause.length+G.declining.length;
   const cplCls=!bm?'kv-blue':bm<12?'kv-green':bm>18?'kv-red':'kv-yellow';
   const from=document.getElementById('dateFrom').value;
   const to=document.getElementById('dateTo').value;
+  const viewAds=new Set(rows.filter(r=>getObjective(r[C.AD_NAME])==='VIEW').map(r=>r[C.AD_ID]||r[C.AD_NAME]));
+  const viewSpend=rows.filter(r=>getObjective(r[C.AD_NAME])==='VIEW').reduce((s,r)=>s+(parseFloat(r[C.SPEND])||0),0);
 
   main.innerHTML=`
     <!-- AI BRIEFING -->
     <div class="briefing">
-      <div class="briefing-icon">🧠</div>
+      <div class="briefing-icon">ð§ </div>
       <div class="briefing-body">
-        <div class="briefing-title">AI Analysis · ${from} → ${to}</div>
+        <div class="briefing-title">AI Analysis Â· ${from} â ${to}</div>
         <div class="briefing-lines">${briefingLines.map(l=>`<div class="briefing-line"><div class="bl-dot"></div><span>${l}</span></div>`).join('')}</div>
       </div>
     </div>
@@ -519,11 +769,11 @@ function renderAll(rows){
       <span class="alert-count">${urgent}</span>
       <span class="alert-label">ads need immediate action</span>
       <div class="alert-tags">
-        <span class="atag atag-red">🔴 Pause: ${G.pause.length}</span>
-        <span class="atag atag-orange">📉 Declining: ${G.declining.length}</span>
-        <span class="atag atag-green">🚀 Scale: ${G.rising.length}</span>
-        <span class="atag atag-blue">✅ Solid: ${G.solid.length}</span>
-        <span class="atag atag-yellow">👀 Monitor: ${G.monitor.length}</span>
+        <span class="atag atag-red">ð´ Pause: ${G.pause.length}</span>
+        <span class="atag atag-orange">ð Declining: ${G.declining.length}</span>
+        <span class="atag atag-green">ð Scale: ${G.rising.length}</span>
+        <span class="atag atag-blue">â Solid: ${G.solid.length}</span>
+        <span class="atag atag-yellow">ð Monitor: ${G.monitor.length}</span>
       </div>
     </div>
 
@@ -537,17 +787,17 @@ function renderAll(rows){
       <div class="kpi-card">
         <div class="kpi-label">Total Leads</div>
         <div class="kpi-value kv-green">${Math.round(totals.leads)}</div>
-        <div class="kpi-sub">from Spend ÷ CPL</div>
+        <div class="kpi-sub">Lead Gen ads only</div>
       </div>
       <div class="kpi-card">
         <div class="kpi-label">Avg CPL</div>
-        <div class="kpi-value ${cplCls}">${bm?'RM '+bm.toFixed(2):'—'}</div>
-        <div class="kpi-sub">weighted benchmark</div>
+        <div class="kpi-value ${cplCls}">${bm?'RM '+bm.toFixed(2):'â'}</div>
+        <div class="kpi-sub">MSG ads benchmark</div>
       </div>
       <div class="kpi-card">
-        <div class="kpi-label">Link Clicks</div>
-        <div class="kpi-value kv-blue">${totals.clicks.toLocaleString()}</div>
-        <div class="kpi-sub">all active ads</div>
+        <div class="kpi-label">Video View Ads</div>
+        <div class="kpi-value kv-muted">${viewAds.size}</div>
+        <div class="kpi-sub">RM ${viewSpend.toFixed(0)} spent</div>
       </div>
       <div class="kpi-card">
         <div class="kpi-label">Active Ads</div>
@@ -556,17 +806,26 @@ function renderAll(rows){
       </div>
     </div>
 
+    <!-- FUNNEL VISUALIZATION -->
+    <div class="funnel-section">
+      <div class="funnel-section-hdr">
+        <h2>ð½ Funnel Performance</h2>
+        <span>TOF â MOF â BOF Â· ad count, spend &amp; key metrics per stage</span>
+      </div>
+      ${renderFunnel(funnelData,bm)}
+    </div>
+
     <!-- AD GROUPS -->
-    ${adSection('🚀 Rising Stars',G.rising,'rising','CPL improving — scale now',bm)}
-    ${adSection('📉 Declining / Fatigued',G.declining,'declining','CPL worsening or audience fatigued',bm)}
-    ${adSection('🔴 Pause & Review',G.pause,'pause','Burning budget at poor return',bm)}
-    ${adSection('✅ Solid Performers',G.solid,'solid','Below benchmark, stable',bm)}
-    ${adSection('👀 Monitor',G.monitor,'monitor','Normal range — collect more data',bm)}
+    ${adSection('ð Rising Stars',G.rising,'rising','Performance improving â scale now',bm)}
+    ${adSection('ð Declining / Fatigued',G.declining,'declining','Performance worsening or audience fatigued',bm)}
+    ${adSection('ð´ Pause &amp; Review',G.pause,'pause','Poor return on spend',bm)}
+    ${adSection('â Solid Performers',G.solid,'solid','Below benchmark, stable',bm)}
+    ${adSection('ð Monitor',G.monitor,'monitor','Normal range â collect more data',bm)}
 
     <!-- CHARTS -->
     <div class="chart-row">
       <div class="chart-card">
-        <h3>CPL Trend by Day (RM) — weighted avg</h3>
+        <h3>CPL Trend by Day (RM) â Lead Gen ads only</h3>
         <div class="chart-wrap"><canvas id="cplChart"></canvas></div>
       </div>
       <div class="chart-card">
@@ -577,14 +836,14 @@ function renderAll(rows){
 
     <!-- PRODUCT BREAKDOWN -->
     <div class="section-header">
-      <h2>📦 Product Performance Breakdown</h2>
-      <span class="section-sub">By Funnel Stage & Angle</span>
+      <h2>ð¦ Product Performance Breakdown</h2>
+      <span class="section-sub">By Funnel Stage, Angle &amp; Objective</span>
     </div>
     ${prodMatrix.map((p,i)=>productSection(p,i,bm)).join('')}
 
-    <!-- ALL ADS SORTABLE TABLE -->
+    <!-- ALL ADS TABLE -->
     <div class="section-header" style="margin-top:28px;">
-      <h2>📋 All Ads — Full Ranking</h2>
+      <h2>ð All Ads â Full Ranking</h2>
       <span class="section-sub">Click any column header to sort</span>
     </div>
     <div class="table-wrap">
@@ -596,12 +855,13 @@ function renderAll(rows){
           <th class="sortable" data-col="product">Product</th>
           <th class="sortable" data-col="angle">Angle</th>
           <th class="td-center">Funnel</th>
-          <th class="sortable td-right" data-col="spend">Spend ↕</th>
-          <th class="sortable td-right" data-col="avgCpl">Avg CPL ↕</th>
-          <th class="sortable td-right" data-col="leads">Leads ↕</th>
-          <th class="sortable td-right" data-col="avgHook">Hook Rate ↕</th>
-          <th class="sortable td-right" data-col="clicks">Clicks ↕</th>
-          <th class="sortable td-right" data-col="freq">Freq ↕</th>
+          <th class="td-center">Obj</th>
+          <th class="sortable td-right" data-col="spend">Spend â</th>
+          <th class="sortable td-right" data-col="avgCpl">Avg CPL â</th>
+          <th class="sortable td-right" data-col="avgHook">Hook â</th>
+          <th class="sortable td-right" data-col="leads">Leads â</th>
+          <th class="sortable td-right" data-col="clicks">Clicks â</th>
+          <th class="sortable td-right" data-col="freq">Freq â</th>
           <th>Status</th>
         </tr></thead>
         <tbody id="allAdsTbody"></tbody>
@@ -609,37 +869,53 @@ function renderAll(rows){
     </div>
   `;
 
-  // store for sorting
-  window._allAds=classified;
-  window._benchmark=bm;
-  sortState={col:'avgCpl',dir:'asc'};
+  window._allAds=classified;window._benchmark=bm;
+  sortState={col:'spend',dir:'desc'};
   renderAllAdsTable(classified,bm);
   attachSortHandlers();
   drawCplChart(dailyData,bm);
   drawGroupChart(G);
 }
 
-// ── AD SECTION ───────────────────────────────────────────────
+// ââ AD SECTION ââââââââââââââââââââââââââââââââââââââââââââââââ
 function adSection(title,ads,groupKey,subtitle,bm){
   const hdr=`<div class="section-header"><h2>${title}</h2><span class="count-badge">${ads.length}</span><span class="section-sub">${subtitle}</span></div>`;
   if(!ads.length)return hdr+`<p class="empty-group">None in this period.</p>`;
   return hdr+`<div class="ad-grid">${ads.map(ad=>adCard(ad,groupKey,bm)).join('')}</div>`;
 }
 
+// ââ AD CARD (OBJECTIVE-AWARE) âââââââââââââââââââââââââââââââââ
 function adCard(ad,groupKey,bm){
-  const cplCls=!ad.avgCpl?'kv-muted':ad.avgCpl<12?'kv-green':ad.avgCpl>18?'kv-red':'kv-yellow';
-  const hookLabel=ad.avgHook?(ad.avgHook>=HOOK_HOT?'🔥 Hook '+ad.avgHook.toFixed(0)+'%':ad.avgHook<HOOK_COLD?'❄️ Hook '+ad.avgHook.toFixed(0)+'%':'🎣 Hook '+ad.avgHook.toFixed(0)+'%'):null;
-  const hookCls=!ad.avgHook?'':ad.avgHook>=HOOK_HOT?'sig-hook-hot':ad.avgHook<HOOK_COLD?'sig-hook-cold':'sig-hook-ok';
+  const isView=ad.objective==='VIEW';
   const tbMap={rising:'tb-rising',declining:'tb-declining',pause:'tb-pause',solid:'tb-solid',monitor:'tb-monitor',insufficient:'tb-insufficient'};
-  const lblMap={rising:'↑ Rising Star',declining:'↓ Declining',pause:'⚠ High CPL',solid:'→ Solid',monitor:'● Monitor',insufficient:'○ Too Early'};
+  const lblMap={rising:'â Rising',declining:'â Declining',pause:'â  High Cost',solid:'â Solid',monitor:'â Monitor',insufficient:'â Too Early'};
   const fCls=ad.funnel==='TOF'?'tof':ad.funnel==='MOF'?'mof':ad.funnel==='BOF'?'bof':'';
-  const shortName=ad.name.length>52?ad.name.slice(0,52)+'…':ad.name;
+  const shortName=ad.name.length>52?ad.name.slice(0,52)+'â¦':ad.name;
   const fullId=ad.id||'';
-  const chipId='chip_'+fullId;
+  const hookLabel=ad.avgHook?(ad.avgHook>=HOOK_HOT?'ð¥ Hook '+ad.avgHook.toFixed(0)+'%':ad.avgHook<HOOK_COLD?'âï¸ Hook '+ad.avgHook.toFixed(0)+'%':'ð£ Hook '+ad.avgHook.toFixed(0)+'%'):null;
+  const hookCls=!ad.avgHook?'':ad.avgHook>=HOOK_HOT?'sig-hook-hot':ad.avgHook<HOOK_COLD?'sig-hook-cold':'sig-hook-ok';
+
+  let metricsHtml='';
+  if(isView){
+    const hcls=!ad.avgHook?'kv-muted':ad.avgHook>=HOOK_HOT?'kv-green':ad.avgHook<HOOK_COLD?'kv-red':'kv-yellow';
+    metricsHtml=`
+      <div class="metric"><div class="metric-label">Spend</div><div class="metric-value kv-blue">RM${ad.spend.toFixed(0)}</div></div>
+      <div class="metric"><div class="metric-label">Hook Rate</div><div class="metric-value ${hcls}">${ad.avgHook?ad.avgHook.toFixed(1)+'%':'â'}</div></div>
+      <div class="metric"><div class="metric-label">CPM</div><div class="metric-value kv-muted">${ad.cpm?'RM'+ad.cpm.toFixed(2):'â'}</div></div>
+      <div class="metric"><div class="metric-label">Impressions</div><div class="metric-value kv-muted">${ad.impressions?(ad.impressions/1000).toFixed(1)+'K':'â'}</div></div>`;
+  }else{
+    const cplCls=!ad.avgCpl?'kv-muted':ad.avgCpl<12?'kv-green':ad.avgCpl>18?'kv-red':'kv-yellow';
+    metricsHtml=`
+      <div class="metric"><div class="metric-label">Spend</div><div class="metric-value kv-blue">RM${ad.spend.toFixed(0)}</div></div>
+      <div class="metric"><div class="metric-label">Avg CPL</div><div class="metric-value ${cplCls}">${ad.avgCpl?'RM'+ad.avgCpl.toFixed(0):'â'}</div></div>
+      <div class="metric"><div class="metric-label">Leads</div><div class="metric-value kv-green">${Math.round(ad.leads)||'â'}</div></div>
+      <div class="metric"><div class="metric-label">Clicks</div><div class="metric-value kv-muted">${ad.clicks}</div></div>`;
+  }
+
   return`<div class="ad-card ${groupKey}">
     <div class="ad-card-header">
       <span class="ad-name" title="${ad.name}">${shortName}</span>
-      ${fullId?`<span class="ad-id-chip" id="${chipId}" title="Click to copy Ad ID" onclick="copyAdId('${fullId}',this)">📋 ${fullId}</span>`:''}
+      ${fullId?`<span class="ad-id-chip" id="chip_${fullId}" title="Click to copy Ad ID" onclick="copyAdId('${fullId}',this)">ð ${fullId}</span>`:''}
     </div>
     <span class="trend-badge ${tbMap[groupKey]}">${lblMap[groupKey]}</span>
     <div class="ad-meta">
@@ -647,41 +923,39 @@ function adCard(ad,groupKey,bm){
       <span class="meta-tag accent">${ad.angle}</span>
       <span class="meta-tag">${ad.product}</span>
       ${fCls?`<span class="meta-tag ${fCls}">${ad.funnel}</span>`:''}
+      <span class="obj-badge ${isView?'obj-view':'obj-msg'}">${isView?'â¶ VIEW':'ð¬ MSG'}</span>
     </div>
     <div class="ad-signals">
       <span class="sig ${ad.status==='ACTIVE'?'sig-active':'sig-paused'}">${ad.status}</span>
-      ${ad.fatigued?`<span class="sig sig-fatigue">⚡ Freq ${ad.freq.toFixed(1)}</span>`:''}
+      ${ad.fatigued?`<span class="sig sig-fatigue">â¡ Freq ${ad.freq.toFixed(1)}</span>`:''}
       ${hookLabel?`<span class="sig ${hookCls}">${hookLabel}</span>`:''}
     </div>
-    <div class="ad-metrics">
-      <div class="metric"><div class="metric-label">Spend</div><div class="metric-value kv-blue">RM${ad.spend.toFixed(0)}</div></div>
-      <div class="metric"><div class="metric-label">Avg CPL</div><div class="metric-value ${cplCls}">${ad.avgCpl?'RM'+ad.avgCpl.toFixed(0):'—'}</div></div>
-      <div class="metric"><div class="metric-label">Leads</div><div class="metric-value kv-green">${Math.round(ad.leads)||'—'}</div></div>
-      <div class="metric"><div class="metric-label">Clicks</div><div class="metric-value kv-muted">${ad.clicks}</div></div>
-    </div>
+    <div class="ad-metrics">${metricsHtml}</div>
     <div class="ad-action">${ad.action}</div>
   </div>`;
 }
 
-// ── PRODUCT SECTION ──────────────────────────────────────────
+// ââ PRODUCT SECTION âââââââââââââââââââââââââââââââââââââââââââ
 function productSection(p,idx,bm){
   const cplVal=p.avgCpl;
   const cplCls=!cplVal?'':cplVal<(bm||99)*0.88?'green':cplVal>(bm||0)*1.3?'red':'yellow';
+  const hookCls=!p.avgHook?'':p.avgHook>=HOOK_HOT?'green':p.avgHook<HOOK_COLD?'red':'orange';
   return`<div class="product-section">
     <div class="product-header" onclick="toggleProduct('ptbl-${idx}',this)">
-      <span class="product-name-big">📦 ${p.product}</span>
+      <span class="product-name-big">ð¦ ${p.product}</span>
       <div class="product-kpis">
         <div class="pkpi"><div class="pkpi-val blue">RM${p.totalSpend.toFixed(0)}</div><div class="pkpi-lbl">Spend</div></div>
-        <div class="pkpi"><div class="pkpi-val ${cplCls}">${cplVal?'RM'+cplVal.toFixed(2):'—'}</div><div class="pkpi-lbl">Avg CPL</div></div>
-        <div class="pkpi"><div class="pkpi-val green">${Math.round(p.totalLeads)}</div><div class="pkpi-lbl">Total Leads</div></div>
-        <div class="pkpi"><div class="pkpi-val">${p.adCount}</div><div class="pkpi-lbl">Ads Running</div></div>
+        <div class="pkpi"><div class="pkpi-val ${cplCls}">${cplVal?'RM'+cplVal.toFixed(2):'â'}</div><div class="pkpi-lbl">Avg CPL</div></div>
+        <div class="pkpi"><div class="pkpi-val ${hookCls}">${p.avgHook?p.avgHook.toFixed(1)+'%':'â'}</div><div class="pkpi-lbl">Avg Hook</div></div>
+        <div class="pkpi"><div class="pkpi-val green">${Math.round(p.totalLeads)||'â'}</div><div class="pkpi-lbl">Leads</div></div>
+        <div class="pkpi"><div class="pkpi-val">${p.adCount}</div><div class="pkpi-lbl">Ads</div></div>
       </div>
-      <span class="product-toggle open" id="ptgl-${idx}">▼</span>
+      <span class="product-toggle open" id="ptgl-${idx}">â¼</span>
     </div>
     <div class="product-table-wrap" id="ptbl-${idx}">
       <table>
         <thead><tr>
-          <th>Funnel</th><th>Angle</th><th># Ads</th>
+          <th>Funnel</th><th>Angle</th><th>Obj</th><th># Ads</th>
           <th class="td-right">Spend</th><th class="td-right">Leads</th>
           <th class="td-right">Avg CPL</th><th class="td-right">Hook Rate</th>
           <th class="td-right">Clicks</th><th class="td-right">CTR%</th>
@@ -693,15 +967,19 @@ function productSection(p,idx,bm){
 }
 
 function matrixRow(r,bm){
+  const isView=r.objective==='VIEW';
   const cc=!r.avgCpl?'cpl-gray':r.avgCpl<(bm||99)*0.88?'cpl-green':r.avgCpl>(bm||0)*1.3?'cpl-red':'cpl-yellow';
   const fCls=r.funnel==='TOF'?'funnel-tof':r.funnel==='MOF'?'funnel-mof':r.funnel==='BOF'?'funnel-bof':'funnel-na';
+  const hCls=!r.avgHook?'hook-ok':r.avgHook>=HOOK_HOT?'hook-hot':r.avgHook<HOOK_COLD?'hook-cold':'hook-ok';
   return`<tr>
-    <td><span class="${fCls}">${r.funnel||'—'}</span></td>
-    <td>${r.angle}</td><td>${r.adCount}</td>
+    <td><span class="${fCls}">${r.funnel||'â'}</span></td>
+    <td>${r.angle}</td>
+    <td><span class="obj-badge ${isView?'obj-view':'obj-msg'}">${isView?'â¶ VIEW':'ð¬ MSG'}</span></td>
+    <td>${r.adCount}</td>
     <td class="td-right">RM ${r.spend.toFixed(0)}</td>
-    <td class="td-right">${r.leads>0?Math.round(r.leads):'—'}</td>
-    <td class="td-right"><span class="cpl-chip ${cc}">${r.avgCpl?'RM'+r.avgCpl.toFixed(2):'—'}</span></td>
-    <td class="td-right">${r.avgHook?r.avgHook.toFixed(1)+'%':'—'}</td>
+    <td class="td-right">${isView?'â':(r.leads>0?Math.round(r.leads):'â')}</td>
+    <td class="td-right">${isView?'â':(r.avgCpl?`<span class="cpl-chip ${cc}">RM${r.avgCpl.toFixed(2)}</span>`:'â')}</td>
+    <td class="td-right">${r.avgHook?`<span class="hook-chip ${hCls}">${r.avgHook.toFixed(1)}%</span>`:'â'}</td>
     <td class="td-right">${r.clicks.toLocaleString()}</td>
     <td class="td-right">${r.ctr.toFixed(2)}%</td>
   </tr>`;
@@ -715,22 +993,24 @@ function toggleProduct(id,header){
   tgl.classList.toggle('open',hidden);
 }
 
-// ── ALL ADS SORTABLE TABLE ───────────────────────────────────
+// ââ ALL ADS TABLE âââââââââââââââââââââââââââââââââââââââââââââ
 function renderAllAdsTable(ads,bm){
   const {col,dir}=sortState;
   const sorted=[...ads].sort((a,b)=>{
-    let av=a[col]??-Infinity, bv=b[col]??-Infinity;
+    let av=a[col]??-Infinity,bv=b[col]??-Infinity;
     if(typeof av==='string')av=av.toLowerCase(),bv=(b[col]??'').toLowerCase();
     return dir==='asc'?(av>bv?1:av<bv?-1:0):(av<bv?1:av>bv?-1:0);
   });
-  const groupLabel={rising:'Rising ↑',declining:'Declining ↓',pause:'Pause ⚠',solid:'Solid ✅',monitor:'Monitor 👀',insufficient:'Too Early'};
+  const groupLabel={rising:'Rising â',declining:'Declining â',pause:'Pause â ',solid:'Solid â',monitor:'Monitor ð',insufficient:'Too Early'};
   const groupCls={rising:'gb-rising',declining:'gb-declining',pause:'gb-pause',solid:'gb-solid',monitor:'gb-monitor',insufficient:'gb-insufficient'};
   const tbody=document.getElementById('allAdsTbody');
   if(!tbody)return;
   tbody.innerHTML=sorted.map(ad=>{
+    const isView=ad.objective==='VIEW';
     const cplCls=!ad.avgCpl?'cpl-gray':ad.avgCpl<(bm||99)*0.88?'cpl-green':ad.avgCpl>(bm||0)*1.3?'cpl-red':'cpl-yellow';
+    const hCls=!ad.avgHook?'hook-ok':ad.avgHook>=HOOK_HOT?'hook-hot':ad.avgHook<HOOK_COLD?'hook-cold':'hook-ok';
     const fCls=ad.funnel==='TOF'?'funnel-tof':ad.funnel==='MOF'?'funnel-mof':ad.funnel==='BOF'?'funnel-bof':'funnel-na';
-    const shortName=ad.name.length>45?ad.name.slice(0,45)+'…':ad.name;
+    const shortName=ad.name.length>40?ad.name.slice(0,40)+'â¦':ad.name;
     return`<tr>
       <td><span class="ad-name-cell" title="${ad.name}">${shortName}</span></td>
       <td class="td-center"><span class="grp-badge ${groupCls[ad.group]}">${groupLabel[ad.group]}</span></td>
@@ -738,10 +1018,11 @@ function renderAllAdsTable(ads,bm){
       <td>${ad.product}</td>
       <td>${ad.angle}</td>
       <td class="td-center"><span class="${fCls}">${ad.funnel}</span></td>
+      <td class="td-center"><span class="obj-badge ${isView?'obj-view':'obj-msg'}">${isView?'â¶ VIEW':'ð¬ MSG'}</span></td>
       <td class="td-right">RM ${ad.spend.toFixed(0)}</td>
-      <td class="td-right"><span class="cpl-chip ${cplCls}">${ad.avgCpl?'RM'+ad.avgCpl.toFixed(2):'—'}</span></td>
-      <td class="td-right">${ad.leads>0?Math.round(ad.leads):'—'}</td>
-      <td class="td-right">${ad.avgHook?ad.avgHook.toFixed(1)+'%':'—'}</td>
+      <td class="td-right">${isView?'â':(ad.avgCpl?`<span class="cpl-chip ${cplCls}">RM${ad.avgCpl.toFixed(2)}</span>`:'â')}</td>
+      <td class="td-right">${ad.avgHook?`<span class="hook-chip ${hCls}">${ad.avgHook.toFixed(1)}%</span>`:'â'}</td>
+      <td class="td-right">${ad.leads>0?Math.round(ad.leads):'â'}</td>
       <td class="td-right">${ad.clicks}</td>
       <td class="td-right">${ad.freq.toFixed(1)}</td>
       <td><span class="sig ${ad.status==='ACTIVE'?'sig-active':'sig-paused'}">${ad.status}</span></td>
@@ -753,19 +1034,18 @@ function attachSortHandlers(){
   document.querySelectorAll('#allAdsTable th.sortable').forEach(th=>{
     th.addEventListener('click',()=>{
       const col=th.dataset.col;
-      if(sortState.col===col) sortState.dir=sortState.dir==='asc'?'desc':'asc';
+      if(sortState.col===col)sortState.dir=sortState.dir==='asc'?'desc':'asc';
       else{sortState.col=col;sortState.dir='asc';}
       document.querySelectorAll('#allAdsTable th').forEach(h=>h.classList.remove('sort-asc','sort-desc'));
       th.classList.add(sortState.dir==='asc'?'sort-asc':'sort-desc');
       renderAllAdsTable(window._allAds,window._benchmark);
     });
   });
-  // set initial sort indicator
-  const initTh=document.querySelector('#allAdsTable th[data-col="avgCpl"]');
-  if(initTh)initTh.classList.add('sort-asc');
+  const initTh=document.querySelector('#allAdsTable th[data-col="spend"]');
+  if(initTh)initTh.classList.add('sort-desc');
 }
 
-// ── CHARTS ───────────────────────────────────────────────────
+// ââ CHARTS ââââââââââââââââââââââââââââââââââââââââââââââââââââ
 function drawCplChart(data,bm){
   if(charts.cpl)charts.cpl.destroy();
   const ctx=document.getElementById('cplChart');if(!ctx)return;
@@ -774,7 +1054,7 @@ function drawCplChart(data,bm){
     backgroundColor:'rgba(99,102,241,.08)',borderWidth:2.5,
     pointBackgroundColor:'#6366f1',pointRadius:4,tension:.35,fill:true,spanGaps:true
   }];
-  if(bm) datasets.push({
+  if(bm)datasets.push({
     label:`Benchmark RM${bm.toFixed(2)}`,data:data.keys.map(()=>+bm.toFixed(2)),
     borderColor:'#dc2626',borderWidth:1.5,borderDash:[6,4],pointRadius:0,fill:false
   });
@@ -799,7 +1079,7 @@ function drawGroupChart(G){
 
 function showError(msg){
   document.getElementById('main').innerHTML=`<div class="state-msg">
-    <h3>⚠️ Could not load data</h3>
+    <h3>â ï¸ Could not load data</h3>
     <p>Deploy Web App with access = <strong>Anyone</strong>.<br><br>
     <span style="font-size:10px;color:#94a3b8">${msg}</span></p></div>`;
 }
