@@ -184,7 +184,7 @@
 
     /* ââ TABLES ââ */
     table{width:100%;border-collapse:collapse;}
-    thead th{background:var(--surface2);padding:9px 14px;text-align:left;font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;font-weight:700;border-bottom:1px solid var(--border);white-space:nowrap;}
+    thead th{background:var(--surface2);padding:9px 14px;text-align:left;font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;font-weight:700;border-bottom:1px solid var(--border);white-space:nowraw;}
     thead th.sortable{cursor:pointer;user-select:none;}
     thead th.sortable:hover{color:var(--accent);background:#eef2ff;}
     thead th.sort-asc::after{content:' â';}
@@ -269,8 +269,8 @@ const HOOK_HOT=30,HOOK_COLD=15,FREQ_FATIGUE=3.5;
 let ALL_ROWS=[],charts={},sortState={col:null,dir:'asc'};
 
 // ââ AD NAME PARSERS âââââââââââââââââââââââââââââââââââââââââââ
-// Ad name format: {ACCOUNT}-{PRODUCT}-{ANGLE}-{FORMAT}-...__{OBJECTIVE}-{FUNNEL}-...
-// e.g. WSP-JTC-Pain-VID-painpoint-v1-170626__MSG-TOF-INN-3565-MSGIG
+// Ad name format: {ACCOUNT}-{PRODUCT}-{ANGLE}-{FORMAT}-..._]{OBJECTIVE}-{FUNNEL}-...
+// e.g. WSP-JTC-Pain-VID-painpoint-v1-170626__MSG-TOF-INT-4¶65-MSGIG
 
 function parseProductFromAdName(adName){
   // 2nd hyphen-segment â product code
@@ -331,14 +331,14 @@ function reloadData(){ALL_ROWS=[];loadData();}
 
 // ââ JSONP LOAD ââââââââââââââââââââââââââââââââââââââââââââââââ
 function loadData(){
-  document.getElementById('main').innerHTML=`<div class="state-msg"><div class="spinner"></div><h3>Loading...</h3></div>`;
+  document.getElementById('main').innerHTML<`<div class="state-msg"><div class="spinner"></div><h3>Loading...</h3></div>`;
   const cb='gs_'+Date.now();
   const t=setTimeout(()=>{delete window[cb];showError('Timed out. Check Web App deployment.');},15000);
   window[cb]=resp=>{
     clearTimeout(t);delete window[cb];
     try{
       ALL_ROWS=(resp.rows||[]).filter(r=>r[C.DATE]);
-      document.getElementById('lastUpdated').textContent='Updated '+new Date().toLocaleTimeString('en-MY',{"hour12":false});
+      document.getElementById('lastUpdated').textContent='Updated '+new Date().toLocaleTimeString('en-MY',{hour12:false});
       applyFilters();
     }catch(e){showError(e.message);}
   };
@@ -353,7 +353,7 @@ function applyFilters(){
   const to=document.getElementById('dateTo').value;
   const acct=document.getElementById('accountFilter').value;
   const rows=ALL_ROWS.filter(r=>{
-    const d=r[C.DATE],slice(0,10);
+    const d=r[C.DATE].slice(0,10);
     return d>=from&&d<=to&&(acct==='ALL'||r[C.ACCOUNT]===acct);
   });
   renderAll(rows,from,to);
@@ -370,7 +370,7 @@ function normalizeFunnel(f){
 }
 
 // ââ COPY AD ID ââââââââââââââââââââââââââââââââââââââââââââââââ
-function copyAdId-&fullId,el){
+function copyAdId(fullId,el){
   navigator.clipboard.writeText(fullId).then(()=>{
     el.textContent='â Copied!';el.classList.add('copied');
     setTimeout(()=>{el.textContent='ð '+fullId;el.classList.remove('copied');},1800);
