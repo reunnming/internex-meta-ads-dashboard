@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-  <title>Internex Â· Meta Ads Dashboard</title>
+  <title>Internex &#183; Meta Ads Dashboard</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
   <style>
     :root {
@@ -20,7 +20,7 @@
     *{box-sizing:border-box;margin:0;padding:0;}
     body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,sans-serif;font-size:14px;}
 
-    /* ââ HEADER ââ */
+    /* &#9472;&#9472; HEADER &#9472;&#9472; */
     .header{background:#fff;border-bottom:1px solid var(--border);padding:12px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;box-shadow:0 1px 3px rgba(0,0,0,.06);}
     .brand{display:flex;align-items:center;gap:10px;}
     .brand-dot{width:9px;height:9px;border-radius:50%;background:var(--accent);}
@@ -28,7 +28,7 @@
     .brand span{color:var(--muted);font-weight:400;}
     #lastUpdated{font-size:11px;color:var(--muted);}
 
-    /* ââ CONTROLS ââ */
+    /* &#9472;&#9472; CONTROLS &#9472;&#9472; */
     .controls{background:#fff;border-bottom:1px solid var(--border);padding:10px 24px;display:flex;gap:10px;align-items:center;flex-wrap:wrap;}
     label{font-size:11px;color:var(--muted);font-weight:500;}
     input[type="date"],select{background:#fff;border:1px solid var(--border);color:var(--text);padding:6px 10px;border-radius:7px;font-size:12px;}
@@ -39,10 +39,10 @@
     .btn-ghost:hover{border-color:var(--accent);color:var(--accent);}
     .vdiv{width:1px;height:22px;background:var(--border);}
 
-    /* ââ LAYOUT ââ */
+    /* &#9472;&#9472; LAYOUT &#9472;&#9472; */
     .main{padding:20px 24px;max-width:1440px;margin:0 auto;}
 
-    /* ââ AI BRIEFING ââ */
+    /* &#9472;&#9472; AI BRIEFING &#9472;&#9472; */
     .briefing{background:linear-gradient(135deg,#eef2ff 0%,#f0fdf4 100%);border:1px solid var(--accent-bd);border-radius:12px;padding:18px 20px;margin-bottom:16px;display:flex;gap:16px;align-items:flex-start;}
     .briefing-icon{font-size:24px;line-height:1;flex-shrink:0;margin-top:2px;}
     .briefing-title{font-size:11px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:.6px;margin-bottom:8px;}
@@ -50,7 +50,7 @@
     .briefing-line{font-size:13px;color:var(--text);line-height:1.5;display:flex;gap:8px;align-items:baseline;}
     .bl-dot{width:6px;height:6px;border-radius:50%;background:var(--accent);flex-shrink:0;margin-top:5px;}
 
-    /* ââ ALERT BAR ââ */
+    /* &#9472;&#9472; ALERT BAR &#9472;&#9472; */
     .alert-bar{background:#fff;border:1px solid var(--border);border-left:4px solid var(--red);border-radius:10px;padding:12px 18px;margin-bottom:16px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;box-shadow:0 1px 4px rgba(0,0,0,.04);}
     .alert-count{font-size:28px;font-weight:800;color:var(--red);line-height:1;}
     .alert-label{font-size:12px;color:var(--muted);}
@@ -62,7 +62,7 @@
     .atag-blue{background:var(--blue-bg);color:var(--blue);border-color:var(--blue-bd);}
     .atag-yellow{background:var(--yellow-bg);color:var(--yellow);border-color:var(--yellow-bd);}
 
-    /* ââ KPI ââ */
+    /* &#9472;&#9472; KPI &#9472;&#9472; */
     .kpi-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin-bottom:20px;}
     .kpi-card{background:#fff;border:1px solid var(--border);border-radius:10px;padding:14px 16px;box-shadow:0 1px 3px rgba(0,0,0,.04);}
     .kpi-label{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.6px;font-weight:600;margin-bottom:6px;}
@@ -71,7 +71,7 @@
     .kv-green{color:var(--green);} .kv-red{color:var(--red);} .kv-yellow{color:var(--yellow);}
     .kv-blue{color:var(--blue);} .kv-muted{color:var(--muted);}
 
-    /* ââ FUNNEL VISUALIZATION ââ */
+    /* &#9472;&#9472; FUNNEL VISUALIZATION &#9472;&#9472; */
     .funnel-section{margin-bottom:24px;}
     .funnel-section-hdr{display:flex;align-items:center;gap:8px;margin-bottom:12px;}
     .funnel-section-hdr h2{font-size:13px;font-weight:700;}
@@ -109,18 +109,18 @@
       .funnel-stage-label{min-width:54px;}
     }
 
-    /* ââ OBJECTIVE BADGES ââ */
+    /* &#9472;&#9472; OBJECTIVE BADGES &#9472;&#9472; */
     .obj-badge{font-size:10px;font-weight:700;padding:2px 7px;border-radius:4px;border:1px solid;}
     .obj-view{background:var(--orange-bg);color:var(--orange);border-color:var(--orange-bd);}
     .obj-msg{background:var(--accent-bg);color:var(--accent);border-color:var(--accent-bd);}
 
-    /* ââ SECTION HEADER ââ */
+    /* &#9472;&#9472; SECTION HEADER &#9472;&#9472; */
     .section-header{display:flex;align-items:center;gap:8px;margin-bottom:10px;margin-top:22px;}
     .section-header h2{font-size:13px;font-weight:700;}
     .section-sub{font-size:11px;color:var(--muted);}
     .count-badge{font-size:11px;background:var(--surface2);border:1px solid var(--border);padding:1px 8px;border-radius:20px;color:var(--muted);font-weight:600;}
 
-    /* ââ AD CARDS ââ */
+    /* &#9472;&#9472; AD CARDS &#9472;&#9472; */
     .ad-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:10px;margin-bottom:6px;}
     .ad-card{background:#fff;border:1px solid var(--border);border-radius:10px;padding:14px;border-top:3px solid transparent;box-shadow:0 1px 3px rgba(0,0,0,.04);}
     .ad-card.rising{border-top-color:var(--green);}
@@ -159,14 +159,14 @@
     .ad-action{font-size:11px;color:var(--muted);line-height:1.6;border-top:1px solid var(--border);padding-top:8px;}
     .empty-group{font-size:12px;color:var(--muted);padding:8px 0 16px;}
 
-    /* ââ CHARTS ââ */
+    /* &#9472;&#9472; CHARTS &#9472;&#9472; */
     .chart-row{display:grid;grid-template-columns:2fr 1fr;gap:14px;margin-bottom:20px;}
     @media(max-width:768px){.chart-row{grid-template-columns:1fr;}}
     .chart-card{background:#fff;border:1px solid var(--border);border-radius:10px;padding:16px;box-shadow:0 1px 3px rgba(0,0,0,.04);}
     .chart-card h3{font-size:12px;color:var(--muted);font-weight:600;margin-bottom:12px;}
     .chart-wrap{position:relative;height:200px;}
 
-    /* ââ PRODUCT SECTION ââ */
+    /* &#9472;&#9472; PRODUCT SECTION &#9472;&#9472; */
     .product-section{margin-bottom:14px;}
     .product-header{background:#fff;border:1px solid var(--border);border-radius:10px 10px 0 0;padding:14px 18px;display:flex;align-items:center;gap:12px;cursor:pointer;user-select:none;}
     .product-header:hover{background:var(--surface2);}
@@ -182,13 +182,13 @@
     .product-toggle.open{transform:rotate(180deg);}
     .product-table-wrap{background:#fff;border:1px solid var(--border);border-top:none;border-radius:0 0 10px 10px;overflow:auto;}
 
-    /* ââ TABLES ââ */
+    /* &#9472;&#9472; TABLES &#9472;&#9472; */
     table{width:100%;border-collapse:collapse;}
-    thead th{background:var(--surface2);padding:9px 14px;text-align:left;font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;font-weight:700;border-bottom:1px solid var(--border);white-space:nowraw;}
+    thead th{background:var(--surface2);padding:9px 14px;text-align:left;font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;font-weight:700;border-bottom:1px solid var(--border);white-space:nowrap;}
     thead th.sortable{cursor:pointer;user-select:none;}
     thead th.sortable:hover{color:var(--accent);background:#eef2ff;}
-    thead th.sort-asc::after{content:' â';}
-    thead th.sort-desc::after{content:' â';}
+    thead th.sort-asc::after{content:' &#8593;';}
+    thead th.sort-desc::after{content:' &#8595;';}
     tbody td{padding:9px 14px;border-bottom:1px solid var(--border);font-size:12px;}
     tbody tr:last-child td{border-bottom:none;}
     tbody tr:hover{background:var(--surface2);}
@@ -214,13 +214,13 @@
     .gb-declining{background:var(--orange-bg);color:var(--orange);border-color:var(--orange-bd);}
     .gb-pause{background:var(--red-bg);color:var(--red);border-color:var(--red-bd);}
     .gb-insufficient{background:var(--surface2);color:var(--muted);border-color:var(--border);}
-    .ad-name-cell{max-width:240px;overflow:hidden;text-overflow:ellipsis;white-space:nowraw;font-size:11px;color:var(--muted);}
+    .ad-name-cell{max-width:240px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:11px;color:var(--muted);}
     .table-wrap{background:#fff;border:1px solid var(--border);border-radius:10px;overflow:auto;box-shadow:0 1px 3px rgba(0,0,0,.04);}
     .ad-id-chip{font-size:9px;color:var(--accent);background:var(--accent-bg);border:1px solid var(--accent-bd);border-radius:4px;padding:2px 7px;flex-shrink:0;font-family:monospace;cursor:pointer;user-select:none;transition:background .15s;}
     .ad-id-chip:hover{background:#c7d2fe;}
     .ad-id-chip.copied{background:var(--green-bg);color:var(--green);border-color:var(--green-bd);}
 
-    /* ââ STATES ââ */
+    /* &#9472;&#9472; STATES &#9472;&#9472; */
     .state-msg{text-align:center;padding:80px 24px;color:var(--muted);}
     .state-msg h3{font-size:18px;margin-bottom:8px;color:var(--text);}
     .spinner{display:inline-block;width:24px;height:24px;border:2px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:spin .8s linear infinite;margin-bottom:12px;}
@@ -232,7 +232,7 @@
 <div class="header">
   <div class="brand">
     <div class="brand-dot"></div>
-    <h1>Internex <span>Â· Meta Ads</span></h1>
+    <h1>Internex <span>&#183; Meta Ads</span></h1>
   </div>
   <span id="lastUpdated">Loading...</span>
 </div>
@@ -249,8 +249,8 @@
     <option value="Ruvine SME">Ruvine SME</option>
   </select>
   <div class="vdiv"></div>
-  <button class="btn" onclick="applyFilters()">ð Apply</button>
-  <button class="btn btn-ghost" onclick="reloadData()">âº Reload</button>
+  <button class="btn" onclick="applyFilters()">&#128260; Apply</button>
+  <button class="btn btn-ghost" onclick="reloadData()">&#8634; Reload</button>
 </div>
 
 <div class="main" id="main">
@@ -261,19 +261,19 @@
 const WEB_APP_URL='https://script.google.com/macros/s/AKfycbx9KpX0KOyD5z6fN-7MWC5XVxhSISQIdFMhgWt2fD-Zi_axgBJchijg2MshOlWazZj3kA/exec';
 const C={DATE:0,ACCOUNT:1,AD_NAME:2,NAMING:3,PRODUCT:4,ANGLE:5,FORMAT:6,FUNNEL:7,AUDIENCE:8,AGE:9,DEST:10,SPEND:11,IMP:12,REACH:13,FREQ:14,CTR:15,CPM:16,CLICKS:17,CPL:18,STATUS:19,HOOK:20,AD_ID:21};
 
-// ââ PRODUCT MAP âââââââââââââââââââââââââââââââââââââââââââââââ
+// \u2500\u2500 PRODUCT MAP \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
 // Maps short product codes extracted from ad names to display labels
-const PRODUCT_MAP={'JTC':'JTC (éç³è¶)'};
+const PRODUCT_MAP={'JTC':'JTC (\u964D\u7CD6\u8336)'};
 
 const HOOK_HOT=30,HOOK_COLD=15,FREQ_FATIGUE=3.5;
 let ALL_ROWS=[],charts={},sortState={col:null,dir:'asc'};
 
-// ââ AD NAME PARSERS âââââââââââââââââââââââââââââââââââââââââââ
+// \u2500\u2500 AD NAME PARSERS \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
 // Ad name format: {ACCOUNT}-{PRODUCT}-{ANGLE}-{FORMAT}-..._]{OBJECTIVE}-{FUNNEL}-...
-// e.g. WSP-JTC-Pain-VID-painpoint-v1-170626__MSG-TOF-INT-4¶65-MSGIG
+// e.g. WSP-JTC-Pain-VID-painpoint-v1-170626__MSG-TOF-INT-3565-MSGIG
 
 function parseProductFromAdName(adName){
-  // 2nd hyphen-segment â product code
+  // 2nd hyphen-segment \u2192 product code
   if(!adName)return null;
   const parts=adName.split('-');
   if(parts.length<2)return null;
@@ -282,14 +282,14 @@ function parseProductFromAdName(adName){
 }
 
 function parseAngleFromAdName(adName){
-  // 3rd hyphen-segment â angle
+  // 3rd hyphen-segment \u2192 angle
   if(!adName)return null;
   const parts=adName.split('-');
   return parts.length>=3?parts[2]:null;
 }
 
 function parseFunnelFromAdName(adName){
-  // After __ separator: {OBJ}-{FUNNEL}-... â 2nd segment is funnel
+  // After __ separator: {OBJ}-{FUNNEL}-... \u2192 2nd segment is funnel
   if(!adName)return null;
   const m=adName.match(/__+[A-Za-z]+-([A-Za-z]+)-/);
   if(m){
@@ -318,7 +318,7 @@ function resolveProduct(sheetProduct,adName){
   return parseProductFromAdName(adName)||'Unknown';
 }
 
-// ââ INIT ââââââââââââââââââââââââââââââââââââââââââââââââââââââ
+// \u2500\u2500 INIT \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
 window.addEventListener('DOMContentLoaded',()=>{setDefaultDates();loadData();});
 function setDefaultDates(){
   const t=new Date(),a=new Date(t),b=new Date(t);
@@ -329,7 +329,7 @@ function setDefaultDates(){
 function fmt(d){return d.toISOString().slice(0,10);}
 function reloadData(){ALL_ROWS=[];loadData();}
 
-// ââ JSONP LOAD ââââââââââââââââââââââââââââââââââââââââââââââââ
+// \u2500\u2500 JSONP LOAD \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
 function loadData(){
   document.getElementById('main').innerHTML<`<div class="state-msg"><div class="spinner"></div><h3>Loading...</h3></div>`;
   const cb='gs_'+Date.now();
@@ -359,7 +359,7 @@ function applyFilters(){
   renderAll(rows,from,to);
 }
 
-// ââ FUNNEL NORMALIZER âââââââââââââââââââââââââââââââââââââââââ
+// \u2500\u2500 FUNNEL NORMALIZER \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
 function normalizeFunnel(f){
   if(!f)return'TOF';
   const u=f.toUpperCase().replace(/[-_()\s]/g,'');
@@ -369,26 +369,26 @@ function normalizeFunnel(f){
   return f.toUpperCase();
 }
 
-// ââ COPY AD ID ââââââââââââââââââââââââââââââââââââââââââââââââ
+// \u2500\u2500 COPY AD ID \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
 function copyAdId(fullId,el){
   navigator.clipboard.writeText(fullId).then(()=>{
-    el.textContent='â Copied!';el.classList.add('copied');
-    setTimeout(()=>{el.textContent='ð '+fullId;el.classList.remove('copied');},1800);
+    el.textContent='\u2713 Copied!';el.classList.add('copied');
+    setTimeout(()=>{el.textContent='\u{1F4CB} '+fullId;el.classList.remove('copied');},1800);
   }).catch(()=>{
     const ta=document.createElement('textarea');
     ta.value=fullId;document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);
-    el.textContent='â Copied!';el.classList.add('copied');
-    setTimeout(()=>{el.textContent='ð '+fullId;el.classList.remove('copied');},1800);
+    el.textContent='\u2713 Copied!';el.classList.add('copied');
+    setTimeout(()=>{el.textContent='\u{1F4CB} '+fullId;el.classList.remove('copied');},1800);
   });
 }
 
-// ââ LEADS HELPER ââââââââââââââââââââââââââââââââââââââââââââââ
+// \u2500\u2500 LEADS HELPER \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
 function rowLeads(r){
   const s=parseFloat(r[C.SPEND])||0,c=parseFloat(r[C.CPL])||0;
   return c>0?s/c:0;
 }
 
-// ââ BUILD AD PROFILES âââââââââââââââââââââââââââââââââââââââââ
+// \u2500\u2500 BUILD AD PROFILES \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
 function buildAdProfiles(rows){
   const byId={};
   rows.forEach(r=>{
@@ -442,18 +442,18 @@ function buildAdProfiles(rows){
     const namedRow=[...adRows].reverse().find(r=>r[C.PRODUCT])||latest;
     const product=resolveProduct(namedRow[C.PRODUCT]||latest[C.PRODUCT],latest[C.AD_NAME]);
     const rawAngle=namedRow[C.ANGLE]||latest[C.ANGLE];
-    const angle=rawAngle||parseAngleFromAdName(latest[C.AD_NAME])||'â';
+    const angle=rawAngle||parseAngleFromAdName(latest[C.AD_NAME])||'\u2014';
     const rawFunnel=namedRow[C.FUNNEL]||latest[C.FUNNEL];
     const funnel=normalizeFunnel(rawFunnel||parseFunnelFromAdName(latest[C.AD_NAME])||'TOF');
 
     return{id,spend,leads,avgCpl,avgHook,clicks,impressions,cpm,freq,trend,objective,
       fatigued:freq>=FREQ_FATIGUE,days:adRows.length,
       name:latest[C.AD_NAME],account:latest[C.ACCOUNT]||adRows[0][C.ACCOUNT],
-      product,angle,format:namedRow[C.FORMAT]||'â',funnel,status:latest[C.STATUS]||'â'};
+      product,angle,format:namedRow[C.FORMAT]||'\u2014',funnel,status:latest[C.STATUS]||'\u2014'};
   });
 }
 
-// ââ CLASSIFY AD (OBJECTIVE-AWARE) ââââââââââââââââââââââââââââ
+// \u2500\u2500 CLASSIFY AD (OBJECTIVE-AWARE) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
 function classifyAd(ad,bm){
   if(ad.objective==='VIEW'){
     if(ad.spend<5)return'insufficient';
@@ -474,28 +474,28 @@ function classifyAd(ad,bm){
   return'monitor';
 }
 
-// ââ ACTION TEXT (OBJECTIVE-AWARE) âââââââââââââââââââââââââââââ
+// \u2500\u2500 ACTION TEXT (OBJECTIVE-AWARE) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
 function actionText(ad,group,bm){
   if(ad.objective==='VIEW'){
-    const h=ad.avgHook?ad.avgHook.toFixed(0)+'%':'â';
-    if(group==='rising')return`Hook Rate improving to ${h} â creative gaining momentum. Scale budget 30â50%.`;
-    if(group==='solid')return`Hook Rate ${h} â strong scroll-stop. Maintain or scale; test new audiences.`;
-    if(group==='monitor')return`Hook Rate ${h} â acceptable. Give 2â3 more days before deciding.`;
-    if(group==='declining')return`Hook Rate ${h} â hook weakening. Test new thumbnail or first-3-second concept.`;
-    if(group==='pause')return`Hook Rate ${h} â poor hook with RM${ad.spend.toFixed(0)} spent. Replace creative concept.`;
-    return`Only RM${ad.spend.toFixed(0)} spent â collect 2â3 more days of data before evaluating.`;
+    const h=ad.avgHook?ad.avgHook.toFixed(0)+'%':'\u2014';
+    if(group==='rising')return`Hook Rate improving to ${h} \u2014 creative gaining momentum. Scale budget 30\u201350%.`;
+    if(group==='solid')return`Hook Rate ${h} \u2014 strong scroll-stop. Maintain or scale; test new audiences.`;
+    if(group==='monitor')return`Hook Rate ${h} \u2014 acceptable. Give 2\u20133 more days before deciding.`;
+    if(group==='declining')return`Hook Rate ${h} \u2014 hook weakening. Test new thumbnail or first-3-second concept.`;
+    if(group==='pause')return`Hook Rate ${h} \u2014 poor hook with RM${ad.spend.toFixed(0)} spent. Replace creative concept.`;
+    return`Only RM${ad.spend.toFixed(0)} spent \u2014 collect 2\u20133 more days of data before evaluating.`;
   }
   // MSG
   const pct=bm&&ad.avgCpl?Math.round(Math.abs(ad.avgCpl-bm)/bm*100):0;
-  if(group==='rising')return`CPL improving â down ${pct}% vs start. Scale budget 30â50%.`;
-  if(group==='declining')return ad.fatigued?`Freq ${ad.freq.toFixed(1)} â audience fatigued. Rotate creative or expand targeting.`:`CPL rising ${pct}% vs start. Pause or swap creative now.`;
-  if(group==='pause')return`CPL ${pct}% above benchmark (RM${ad.avgCpl?.toFixed(2)}). Pause â RM${ad.spend.toFixed(0)} spent at poor return.`;
+  if(group==='rising')return`CPL improving \u2014 down ${pct}% vs start. Scale budget 30\u201350%.`;
+  if(group==='declining')return ad.fatigued?`Freq ${ad.freq.toFixed(1)} \u2014 audience fatigued. Rotate creative or expand targeting.`:`CPL rising ${pct}% vs start. Pause or swap creative now.`;
+  if(group==='pause')return`CPL ${pct}% above benchmark (RM${ad.avgCpl?.toFixed(2)}). Pause \u2014 RM${ad.spend.toFixed(0)} spent at poor return.`;
   if(group==='solid')return`${pct}% below benchmark. Maintain budget, test new audiences.`;
-  if(group==='monitor')return`Within normal range. Collect 3â5 more days before scaling or cutting.`;
-  return`Only RM${ad.spend.toFixed(0)} spent â push to RM30+ before judging.`;
+  if(group==='monitor')return`Within normal range. Collect 3\u20135 more days before scaling or cutting.`;
+  return`Only RM${ad.spend.toFixed(0)} spent \u2014 push to RM30+ before judging.`;
 }
 
-// ââ KPI TOTALS ââââââââââââââââââââââââââââââââââââââââââââââââ
+// \u2500\u2500 KPI TOTALS \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
 function kpiTotals(rows){
   let spend=0,leads=0,clicks=0,impressions=0;
   const ads=new Set(),dates=new Set();
@@ -516,7 +516,7 @@ function avgCplFromRows(rows){
   return d>0?n/d:null;
 }
 
-// ââ PRODUCT MATRIX ââââââââââââââââââââââââââââââââââââââââââââ
+// \u2500\u2500 PRODUCT MATRIX \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
 function buildProductMatrix(rows){
   // Build ad-level metadata: prefer sheet data, fall back to ad name parse
   const sortedForMeta=[...rows].sort((a,b)=>a[C.DATE].localeCompare(b[C.DATE]));
@@ -529,7 +529,7 @@ function buildProductMatrix(rows){
     const rawAngle=r[C.ANGLE]||parseAngleFromAdName(r[C.AD_NAME]);
     // Sheet product takes priority; always overwrite with newer rows
     if(sheetProduct||!adMeta[id]){
-      adMeta[id]={product,angle:rawAngle||'â',funnel:rawFunnel};
+      adMeta[id]={product,angle:rawAngle||'\u2014',funnel:rawFunnel};
     }
   });
 
@@ -540,7 +540,7 @@ function buildProductMatrix(rows){
     const prod=meta.product||resolveProduct(r[C.PRODUCT],r[C.AD_NAME]);
     const rawFunnel=meta.funnel||r[C.FUNNEL]||parseFunnelFromAdName(r[C.AD_NAME]);
     const funnel=normalizeFunnel(rawFunnel);
-    const angle=meta.angle||r[C.ANGLE]||parseAngleFromAdName(r[C.AD_NAME])||'â';
+    const angle=meta.angle||r[C.ANGLE]||parseAngleFromAdName(r[C.AD_NAME])||'\u2014';
     const objective=getObjective(r[C.AD_NAME]);
     const key=`${funnel}||${angle}||${objective}`;
 
@@ -576,7 +576,7 @@ function buildProductMatrix(rows){
   });
 }
 
-// ââ FUNNEL DATA âââââââââââââââââââââââââââââââââââââââââââââââ
+// \u2500\u2500 FUNNEL DATA \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
 function buildFunnelData(rows){
   const stages={
     TOF:{spend:0,leads:0,imp:0,clicks:0,hookN:0,hookD:0,ads:new Set(),viewAds:new Set(),msgAds:new Set()},
@@ -608,7 +608,7 @@ function buildFunnelData(rows){
   });
 }
 
-// ââ CPL BY DAY ââââââââââââââââââââââââââââââââââââââââââââââââ
+// \u2500\u2500 CPL BY DAY \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
 function buildDailyCpl(rows){
   const byDate={};
   rows.forEach(r=>{
@@ -621,7 +621,7 @@ function buildDailyCpl(rows){
   return{keys,cpls:keys.map(d=>byDate[d].leads>0?+(byDate[d].spend/byDate[d].leads).toFixed(2):null)};
 }
 
-// ââ AI BRIEFING âââââââââââââââââââââââââââââââââââââââââââââââ
+// \u2500\u2500 AI BRIEFING \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
 function generateBriefing(rows,G,bm,totals,prodMatrix){
   const lines=[];
   const msgRows=rows.filter(r=>getObjective(r[C.AD_NAME])==='MSG');
@@ -630,10 +630,10 @@ function generateBriefing(rows,G,bm,totals,prodMatrix){
   const msgSpend=msgRows.reduce((s,r)=>s+(parseFloat(r[C.SPEND])||0),0);
 
   if(bm){
-    const lvl=bm<12?'strong â below RM12 target ð':bm>18?'above RM18 â review spend â ï¸':'within acceptable range';
-    lines.push(`Lead Gen CPL: RM${bm.toFixed(2)} (${Math.round(msgLeads)} leads Â· RM${msgSpend.toFixed(0)} spend) â ${lvl}.`);
+    const lvl=bm<12?'strong \u2014 below RM12 target \u{1F44D}':bm>18?'above RM18 \u2014 review spend \u26A0\uFE0F':'within acceptable range';
+    lines.push(`Lead Gen CPL: RM${bm.toFixed(2)} (${Math.round(msgLeads)} leads \u00B7 RM${msgSpend.toFixed(0)} spend) \u2014 ${lvl}.`);
   }else if(totals.spend>0){
-    lines.push('No CPL data yet â keep Lead Gen ads running 3+ days.');
+    lines.push('No CPL data yet \u2014 keep Lead Gen ads running 3+ days.');
   }
 
   if(viewRows.length>0){
@@ -641,8 +641,8 @@ function generateBriefing(rows,G,bm,totals,prodMatrix){
     const viewAdIds=new Set(viewRows.map(r=>r[C.AD_ID]||r[C.AD_NAME]));
     if(viewHooks.length>0){
       const avgH=viewHooks.reduce((s,v)=>s+v,0)/viewHooks.length;
-      const note=avgH>=HOOK_HOT?'ð¥ strong â consider scaling':avgH<HOOK_COLD?'âï¸ weak â test new hooks':'ð£ acceptable';
-      lines.push(`Video Views (TOF): ${viewAdIds.size} ads Â· avg Hook Rate ${avgH.toFixed(1)}% ${note}.`);
+      const note=avgH>=HOOK_HOT?'\u{1F525} strong \u2014 consider scaling':avgH<HOOK_COLD?'\u2744\uFE0F weak \u2014 test new hooks':'\u{1F3A3} acceptable';
+      lines.push(`Video Views (TOF): ${viewAdIds.size} ads \u00B7 avg Hook Rate ${avgH.toFixed(1)}% ${note}.`);
     }
   }
 
@@ -653,25 +653,25 @@ function generateBriefing(rows,G,bm,totals,prodMatrix){
   if(acctCpls.length>=2){
     acctCpls.sort((a,b)=>a[1]-b[1]);
     const best=acctCpls[0],worst=acctCpls[acctCpls.length-1];
-    lines.push(`${best[0]} leading â RM${best[1].toFixed(2)} vs RM${worst[1].toFixed(2)} CPL (${worst[0]}).`);
+    lines.push(`${best[0]} leading \u2014 RM${best[1].toFixed(2)} vs RM${worst[1].toFixed(2)} CPL (${worst[0]}).`);
   }
   const urgent=G.pause.length+G.declining.length;
-  if(urgent>0)lines.push(`${urgent} ad${urgent>1?'s':''} need immediate action â ${G.pause.length} overspending, ${G.declining.length} declining.`);
-  else lines.push('No urgent pauses â portfolio health is good.');
+  if(urgent>0)lines.push(`${urgent} ad${urgent>1?'s':''} need immediate action \u2014 ${G.pause.length} overspending, ${G.declining.length} declining.`);
+  else lines.push('No urgent pauses \u2014 portfolio health is good.');
   if(G.rising.length>0){
     const top=[...G.rising].sort((a,b)=>(a.avgCpl||99)-(b.avgCpl||99))[0];
     const metric=top.objective==='VIEW'?`Hook ${top.avgHook?.toFixed(0)}%`:`RM${top.avgCpl?.toFixed(2)} CPL`;
-    lines.push(`ð Scale now: "${top.angle}" (${top.product}) Â· ${metric} trending up.`);
+    lines.push(`\u{1F680} Scale now: "${top.angle}" (${top.product}) \u00B7 ${metric} trending up.`);
   }
   return lines;
 }
 
-// ââ RENDER FUNNEL âââââââââââââââââââââââââââââââââââââââââââââ
+// \u2500\u2500 RENDER FUNNEL \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
 function renderFunnel(funnelData,bm){
   const cfg={
-    TOF:{icon:'ð¯',label:'TOF',sub:'Cold Audience',cls:'f-tof'},
-    MOF:{icon:'ð¤',label:'MOF',sub:'Warm Audience',cls:'f-mof'},
-    BOF:{icon:'ð',label:'BOF',sub:'Retargeting',cls:'f-bof'}
+    TOF:{icon:'\u{1F3AF}',label:'TOF',sub:'Cold Audience',cls:'f-tof'},
+    MOF:{icon:'\u{1F91D}',label:'MOF',sub:'Warm Audience',cls:'f-mof'},
+    BOF:{icon:'\u{1F3C6}',label:'BOF',sub:'Retargeting',cls:'f-bof'}
   };
   let html='<div class="funnel-container">';
   funnelData.forEach((stage,i)=>{
@@ -679,7 +679,7 @@ function renderFunnel(funnelData,bm){
     const isEmpty=stage.adCount===0;
     const cplCls=!stage.avgCpl?'kv-muted':stage.avgCpl<(bm||99)*0.88?'kv-green':stage.avgCpl>(bm||0)*1.3?'kv-red':'kv-yellow';
     const hookCls=!stage.avgHook?'kv-muted':stage.avgHook>=HOOK_HOT?'kv-green':stage.avgHook<HOOK_COLD?'kv-red':'kv-yellow';
-    if(i>0)html+=`<div class="funnel-arrow">â¼ â¼ â¼</div>`;
+    if(i>0)html+=`<div class="funnel-arrow">\u25BC \u25BC \u25BC</div>`;
     html+=`<div class="funnel-row ${c.cls}">
       <div class="funnel-card ${c.cls}${isEmpty?' f-empty':''}">
         <div class="funnel-stage-label">
@@ -715,8 +715,8 @@ function renderFunnel(funnelData,bm){
           </div>`:''}
         </div>
         <div class="funnel-badges">
-          ${stage.viewAdCount>0?`<div class="funnel-badge fb-view">â¶ VIEW &nbsp;${stage.viewAdCount} ads</div>`:''}
-          ${stage.msgAdCount>0?`<div class="funnel-badge fb-msg">ð¬ MSG &nbsp;${stage.msgAdCount} ads</div>`:''}
+          ${stage.viewAdCount>0?`<div class="funnel-badge fb-view">\u25B6 VIEW &nbsp;${stage.viewAdCount} ads</div>`:''}
+          ${stage.msgAdCount>0?`<div class="funnel-badge fb-msg">\u{1F4AC} MSG &nbsp;${stage.msgAdCount} ads</div>`:''}
           ${isEmpty?`<div class="funnel-empty-note">No ads this period</div>`:''}
         </div>
       </div>
@@ -726,10 +726,10 @@ function renderFunnel(funnelData,bm){
   return html;
 }
 
-// ââ RENDER ALL ââââââââââââââââââââââââââââââââââââââââââââââââ
+// \u2500\u2500 RENDER ALL \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
 function renderAll(rows){
   const main=document.getElementById('main');
-  if(!rows.length){main.innerHTML<`<div class="state-msg"><h3>No data for this period</h3></div>`;return;}
+  if(!rows.length){main.innerHTML=`<div class="state-msg"><h3>No data for this period</h3></div>`;return;}
   const profiles=buildAdProfiles(rows);
   const totals=kpiTotals(rows);
   const msgRows=rows.filter(r=>getObjective(r[C.AD_NAME])==='MSG');
@@ -757,9 +757,9 @@ function renderAll(rows){
   main.innerHTML=`
     <!-- AI BRIEFING -->
     <div class="briefing">
-      <div class="briefing-icon">ð§ </div>
+      <div class="briefing-icon">\u{1F9E0}</div>
       <div class="briefing-body">
-        <div class="briefing-title">AI Analysis Â· ${from} â ${to}</div>
+        <div class="briefing-title">AI Analysis \u00B7 ${from} \u2192 ${to}</div>
         <div class="briefing-lines">${briefingLines.map(l=>`<div class="briefing-line"><div class="bl-dot"></div><span>${l}</span></div>`).join('')}</div>
       </div>
     </div>
@@ -769,11 +769,11 @@ function renderAll(rows){
       <span class="alert-count">${urgent}</span>
       <span class="alert-label">ads need immediate action</span>
       <div class="alert-tags">
-        <span class="atag atag-red">ð´ Pause: ${G.pause.length}</span>
-        <span class="atag atag-orange">ð Declining: ${G.declining.length}</span>
-        <span class="atag atag-green">ð Scale: ${G.rising.length}</span>
-        <span class="atag atag-blue">â Solid: ${G.solid.length}</span>
-        <span class="atag atag-yellow">ð Monitor: ${G.monitor.length}</span>
+        <span class="atag atag-red">\u{1F534} Pause: ${G.pause.length}</span>
+        <span class="atag atag-orange">\u{1F4C9} Declining: ${G.declining.length}</span>
+        <span class="atag atag-green">\u{1F680} Scale: ${G.rising.length}</span>
+        <span class="atag atag-blue">\u2705 Solid: ${G.solid.length}</span>
+        <span class="atag atag-yellow">\u{1F440} Monitor: ${G.monitor.length}</span>
       </div>
     </div>
 
@@ -791,7 +791,7 @@ function renderAll(rows){
       </div>
       <div class="kpi-card">
         <div class="kpi-label">Avg CPL</div>
-        <div class="kpi-value ${cplCls}">${bm?'RM '+bm.toFixed(2):'â'}</div>
+        <div class="kpi-value ${cplCls}">${bm?'RM '+bm.toFixed(2):'\u2014'}</div>
         <div class="kpi-sub">MSG ads benchmark</div>
       </div>
       <div class="kpi-card">
@@ -809,23 +809,23 @@ function renderAll(rows){
     <!-- FUNNEL VISUALIZATION -->
     <div class="funnel-section">
       <div class="funnel-section-hdr">
-        <h2>ð½ Funnel Performance</h2>
-        <span>TOF â MOF â BOF Â· ad count, spend &amp; key metrics per stage</span>
+        <h2>\u{1F53D} Funnel Performance</h2>
+        <span>TOF \u2192 MOF \u2192 BOF \u00B7 ad count, spend &amp; key metrics per stage</span>
       </div>
       ${renderFunnel(funnelData,bm)}
     </div>
 
     <!-- AD GROUPS -->
-    ${adSection('ð Rising Stars',G.rising,'rising','Performance improving â scale now',bm)}
-    ${adSection('ð Declining / Fatigued',G.declining,'declining','Performance worsening or audience fatigued',bm)}
-    ${adSection('ð´ Pause &amp; Review',G.pause,'pause','Poor return on spend',bm)}
-    ${adSection('â Solid Performers',G.solid,'solid','Below benchmark, stable',bm)}
-    ${adSection('ð Monitor',G.monitor,'monitor','Normal range â collect more data',bm)}
+    ${adSection('\u{1F680} Rising Stars',G.rising,'rising','Performance improving \u2014 scale now',bm)}
+    ${adSection('\u{1F4C9} Declining / Fatigued',G.declining,'declining','Performance worsening or audience fatigued',bm)}
+    ${adSection('\u{1F534} Pause &amp; Review',G.pause,'pause','Poor return on spend',bm)}
+    ${adSection('\u2705 Solid Performers',G.solid,'solid','Below benchmark, stable',bm)}
+    ${adSection('\u{1F440} Monitor',G.monitor,'monitor','Normal range \u2014 collect more data',bm)}
 
     <!-- CHARTS -->
     <div class="chart-row">
       <div class="chart-card">
-        <h3>CPL Trend by Day (RM) â Lead Gen ads only</h3>
+        <h3>CPL Trend by Day (RM) \u2014 Lead Gen ads only</h3>
         <div class="chart-wrap"><canvas id="cplChart"></canvas></div>
       </div>
       <div class="chart-card">
@@ -836,14 +836,14 @@ function renderAll(rows){
 
     <!-- PRODUCT BREAKDOWN -->
     <div class="section-header">
-      <h2>ð¦ Product Performance Breakdown</h2>
+      <h2>\u{1F4E6} Product Performance Breakdown</h2>
       <span class="section-sub">By Funnel Stage, Angle &amp; Objective</span>
     </div>
     ${prodMatrix.map((p,i)=>productSection(p,i,bm)).join('')}
 
     <!-- ALL ADS TABLE -->
     <div class="section-header" style="margin-top:28px;">
-      <h2>ð All Ads â Full Ranking</h2>
+      <h2>\u{1F4CB} All Ads \u2014 Full Ranking</h2>
       <span class="section-sub">Click any column header to sort</span>
     </div>
     <div class="table-wrap">
@@ -856,12 +856,12 @@ function renderAll(rows){
           <th class="sortable" data-col="angle">Angle</th>
           <th class="td-center">Funnel</th>
           <th class="td-center">Obj</th>
-          <th class="sortable td-right" data-col="spend">Spend â</th>
-          <th class="sortable td-right" data-col="avgCpl">Avg CPL â</th>
-          <th class="sortable td-right" data-col="avgHook">Hook â</th>
-          <th class="sortable td-right" data-col="leads">Leads â</th>
-          <th class="sortable td-right" data-col="clicks">Clicks â</th>
-          <th class="sortable td-right" data-col="freq">Freq â</th>
+          <th class="sortable td-right" data-col="spend">Spend \u2195</th>
+          <th class="sortable td-right" data-col="avgCpl">Avg CPL \u2195</th>
+          <th class="sortable td-right" data-col="avgHook">Hook \u2195</th>
+          <th class="sortable td-right" data-col="leads">Leads \u2195</th>
+          <th class="sortable td-right" data-col="clicks">Clicks \u2195</th>
+          <th class="sortable td-right" data-col="freq">Freq \u2195</th>
           <th>Status</th>
         </tr></thead>
         <tbody id="allAdsTbody"></tbody>
@@ -877,22 +877,22 @@ function renderAll(rows){
   drawGroupChart(G);
 }
 
-// ââ AD SECTION ââââââââââââââââââââââââââââââââââââââââââââââââ
+// \u2500\u2500 AD SECTION \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
 function adSection(title,ads,groupKey,subtitle,bm){
   const hdr=`<div class="section-header"><h2>${title}</h2><span class="count-badge">${ads.length}</span><span class="section-sub">${subtitle}</span></div>`;
   if(!ads.length)return hdr+`<p class="empty-group">None in this period.</p>`;
   return hdr+`<div class="ad-grid">${ads.map(ad=>adCard(ad,groupKey,bm)).join('')}</div>`;
 }
 
-// ââ AD CARD (OBJECTIVE-AWARE) âââââââââââââââââââââââââââââââââ
+// \u2500\u2500 AD CARD (OBJECTIVE-AWARE) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
 function adCard(ad,groupKey,bm){
   const isView=ad.objective==='VIEW';
   const tbMap={rising:'tb-rising',declining:'tb-declining',pause:'tb-pause',solid:'tb-solid',monitor:'tb-monitor',insufficient:'tb-insufficient'};
-  const lblMap={rising:'â Rising',declining:'â Declining',pause:'â  High Cost',solid:'â Solid',monitor:'â Monitor',insufficient:'â Too Early'};
+  const lblMap={rising:'\u2191 Rising',declining:'\u2193 Declining',pause:'\u26A0 High Cost',solid:'\u2192 Solid',monitor:'\u25CF Monitor',insufficient:'\u25CB Too Early'};
   const fCls=ad.funnel==='TOF'?'tof':ad.funnel==='MOF'?'mof':ad.funnel==='BOF'?'bof':'';
-  const shortName=ad.name.length>52?ad.name.slice(0,52)+'â¦':ad.name;
+  const shortName=ad.name.length>52?ad.name.slice(0,52)+'\u2026':ad.name;
   const fullId=ad.id||'';
-  const hookLabel=ad.avgHook?(ad.avgHook>=HOOK_HOT?'ð¥ Hook '+ad.avgHook.toFixed(0)+'%':ad.avgHook<HOOK_COLD?'âï¸ Hook '+ad.avgHook.toFixed(0)+'%':'ð£ Hook '+ad.avgHook.toFixed(0)+'%'):null;
+  const hookLabel=ad.avgHook?(ad.avgHook>=HOOK_HOT?'\u{1F525} Hook '+ad.avgHook.toFixed(0)+'%':ad.avgHook<HOOK_COLD?'\u2744\uFE0F Hook '+ad.avgHook.toFixed(0)+'%':'\u{1F3A3} Hook '+ad.avgHook.toFixed(0)+'%'):null;
   const hookCls=!ad.avgHook?'':ad.avgHook>=HOOK_HOT?'sig-hook-hot':ad.avgHook<HOOK_COLD?'sig-hook-cold':'sig-hook-ok';
 
   let metricsHtml='';
@@ -900,22 +900,22 @@ function adCard(ad,groupKey,bm){
     const hcls=!ad.avgHook?'kv-muted':ad.avgHook>=HOOK_HOT?'kv-green':ad.avgHook<HOOK_COLD?'kv-red':'kv-yellow';
     metricsHtml=`
       <div class="metric"><div class="metric-label">Spend</div><div class="metric-value kv-blue">RM${ad.spend.toFixed(0)}</div></div>
-      <div class="metric"><div class="metric-label">Hook Rate</div><div class="metric-value ${hcls}">${ad.avgHook?ad.avgHook.toFixed(1)+'%':'â'}</div></div>
-      <div class="metric"><div class="metric-label">CPM</div><div class="metric-value kv-muted">${ad.cpm?'RM'+ad.cpm.toFixed(2):'â'}</div></div>
-      <div class="metric"><div class="metric-label">Impressions</div><div class="metric-value kv-muted">${ad.impressions?(ad.impressions/1000).toFixed(1)+'K':'â'}</div></div>`;
+      <div class="metric"><div class="metric-label">Hook Rate</div><div class="metric-value ${hcls}">${ad.avgHook?ad.avgHook.toFixed(1)+'%':'\u2014'}</div></div>
+      <div class="metric"><div class="metric-label">CPM</div><div class="metric-value kv-muted">${ad.cpm?'RM'+ad.cpm.toFixed(2):'\u2014'}</div></div>
+      <div class="metric"><div class="metric-label">Impressions</div><div class="metric-value kv-muted">${ad.impressions?(ad.impressions/1000).toFixed(1)+'K':'\u2014'}</div></div>`;
   }else{
     const cplCls=!ad.avgCpl?'kv-muted':ad.avgCpl<12?'kv-green':ad.avgCpl>18?'kv-red':'kv-yellow';
     metricsHtml=`
       <div class="metric"><div class="metric-label">Spend</div><div class="metric-value kv-blue">RM${ad.spend.toFixed(0)}</div></div>
-      <div class="metric"><div class="metric-label">Avg CPL</div><div class="metric-value ${cplCls}">${ad.avgCpl?'RM'+ad.avgCpl.toFixed(0):'â'}</div></div>
-      <div class="metric"><div class="metric-label">Leads</div><div class="metric-value kv-green">${Math.round(ad.leads)||'â'}</div></div>
+      <div class="metric"><div class="metric-label">Avg CPL</div><div class="metric-value ${cplCls}">${ad.avgCpl?'RM'+ad.avgCpl.toFixed(0):'\u2014'}</div></div>
+      <div class="metric"><div class="metric-label">Leads</div><div class="metric-value kv-green">${Math.round(ad.leads)||'\u2014'}</div></div>
       <div class="metric"><div class="metric-label">Clicks</div><div class="metric-value kv-muted">${ad.clicks}</div></div>`;
   }
 
   return`<div class="ad-card ${groupKey}">
     <div class="ad-card-header">
       <span class="ad-name" title="${ad.name}">${shortName}</span>
-      ${fullId?`<span class="ad-id-chip" id="chip_${fullId}" title="Click to copy Ad ID" onclick="copyAdId('${fullId}',this)">ð ${fullId}</span>`:''}
+      ${fullId?`<span class="ad-id-chip" id="chip_${fullId}" title="Click to copy Ad ID" onclick="copyAdId('${fullId}',this)">\u{1F4CB} ${fullId}</span>`:''}
     </div>
     <span class="trend-badge ${tbMap[groupKey]}">${lblMap[groupKey]}</span>
     <div class="ad-meta">
@@ -923,11 +923,11 @@ function adCard(ad,groupKey,bm){
       <span class="meta-tag accent">${ad.angle}</span>
       <span class="meta-tag">${ad.product}</span>
       ${fCls?`<span class="meta-tag ${fCls}">${ad.funnel}</span>`:''}
-      <span class="obj-badge ${isView?'obj-view':'obj-msg'}">${isView?'â¶ VIEW':'ð¬ MSG'}</span>
+      <span class="obj-badge ${isView?'obj-view':'obj-msg'}">${isView?'\u25B6 VIEW':'\u{1F4AC} MSG'}</span>
     </div>
     <div class="ad-signals">
       <span class="sig ${ad.status==='ACTIVE'?'sig-active':'sig-paused'}">${ad.status}</span>
-      ${ad.fatigued?`<span class="sig sig-fatigue">â¡ Freq ${ad.freq.toFixed(1)}</span>`:''}
+      ${ad.fatigued?`<span class="sig sig-fatigue">\u26A1 Freq ${ad.freq.toFixed(1)}</span>`:''}
       ${hookLabel?`<span class="sig ${hookCls}">${hookLabel}</span>`:''}
     </div>
     <div class="ad-metrics">${metricsHtml}</div>
@@ -935,22 +935,22 @@ function adCard(ad,groupKey,bm){
   </div>`;
 }
 
-// ââ PRODUCT SECTION âââââââââââââââââââââââââââââââââââââââââââ
+// \u2500\u2500 PRODUCT SECTION \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
 function productSection(p,idx,bm){
   const cplVal=p.avgCpl;
   const cplCls=!cplVal?'':cplVal<(bm||99)*0.88?'green':cplVal>(bm||0)*1.3?'red':'yellow';
   const hookCls=!p.avgHook?'':p.avgHook>=HOOK_HOT?'green':p.avgHook<HOOK_COLD?'red':'orange';
   return`<div class="product-section">
     <div class="product-header" onclick="toggleProduct('ptbl-${idx}',this)">
-      <span class="product-name-big">ð¦ ${p.product}</span>
+      <span class="product-name-big">\u{1F4E6} ${p.product}</span>
       <div class="product-kpis">
         <div class="pkpi"><div class="pkpi-val blue">RM${p.totalSpend.toFixed(0)}</div><div class="pkpi-lbl">Spend</div></div>
-        <div class="pkpi"><div class="pkpi-val ${cplCls}">${cplVal?'RM'+cplVal.toFixed(2):'â'}</div><div class="pkpi-lbl">Avg CPL</div></div>
-        <div class="pkpi"><div class="pkpi-val ${hookCls}">${p.avgHook?p.avgHook.toFixed(1)+'%':'â'}</div><div class="pkpi-lbl">Avg Hook</div></div>
-        <div class="pkpi"><div class="pkpi-val green">${Math.round(p.totalLeads)||'â'}</div><div class="pkpi-lbl">Leads</div></div>
+        <div class="pkpi"><div class="pkpi-val ${cplCls}">${cplVal?'RM'+cplVal.toFixed(2):'\u2014'}</div><div class="pkpi-lbl">Avg CPL</div></div>
+        <div class="pkpi"><div class="pkpi-val ${hookCls}">${p.avgHook?p.avgHook.toFixed(1)+'%':'\u2014'}</div><div class="pkpi-lbl">Avg Hook</div></div>
+        <div class="pkpi"><div class="pkpi-val green">${Math.round(p.totalLeads)||'\u2014'}</div><div class="pkpi-lbl">Leads</div></div>
         <div class="pkpi"><div class="pkpi-val">${p.adCount}</div><div class="pkpi-lbl">Ads</div></div>
       </div>
-      <span class="product-toggle open" id="ptgl-${idx}">â¼</span>
+      <span class="product-toggle open" id="ptgl-${idx}">\u25BC</span>
     </div>
     <div class="product-table-wrap" id="ptbl-${idx}">
       <table>
@@ -972,14 +972,14 @@ function matrixRow(r,bm){
   const fCls=r.funnel==='TOF'?'funnel-tof':r.funnel==='MOF'?'funnel-mof':r.funnel==='BOF'?'funnel-bof':'funnel-na';
   const hCls=!r.avgHook?'hook-ok':r.avgHook>=HOOK_HOT?'hook-hot':r.avgHook<HOOK_COLD?'hook-cold':'hook-ok';
   return`<tr>
-    <td><span class="${fCls}">${r.funnel||'â'}</span></td>
+    <td><span class="${fCls}">${r.funnel||'\u2014'}</span></td>
     <td>${r.angle}</td>
-    <td><span class="obj-badge ${isView?'obj-view':'obj-msg'}">${isView?'â¶ VIEW':'ð¬ MSG'}</span></td>
+    <td><span class="obj-badge ${isView?'obj-view':'obj-msg'}">${isView?'\u25B6 VIEW':'\u{1F4AC} MSG'}</span></td>
     <td>${r.adCount}</td>
     <td class="td-right">RM ${r.spend.toFixed(0)}</td>
-    <td class="td-right">${isView?'â':(r.leads>0?Math.round(r.leads):'â')}</td>
-    <td class="td-right">${isView?'â':(r.avgCpl?`<span class="cpl-chip ${cc}">RM${r.avgCpl.toFixed(2)}</span>`:'â')}</td>
-    <td class="td-right">${r.avgHook?`<span class="hook-chip ${hCls}">${r.avgHook.toFixed(1)}%</span>`:'â'}</td>
+    <td class="td-right">${isView?'\u2014':(r.leads>0?Math.round(r.leads):'\u2014')}</td>
+    <td class="td-right">${isView?'\u2014':(r.avgCpl?`<span class="cpl-chip ${cc}">RM${r.avgCpl.toFixed(2)}</span>`:'\u2014')}</td>
+    <td class="td-right">${r.avgHook?`<span class="hook-chip ${hCls}">${r.avgHook.toFixed(1)}%</span>`:'\u2014'}</td>
     <td class="td-right">${r.clicks.toLocaleString()}</td>
     <td class="td-right">${r.ctr.toFixed(2)}%</td>
   </tr>`;
@@ -993,7 +993,7 @@ function toggleProduct(id,header){
   tgl.classList.toggle('open',hidden);
 }
 
-// ââ ALL ADS TABLE âââââââââââââââââââââââââââââââââââââââââââââ
+// \u2500\u2500 ALL ADS TABLE \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
 function renderAllAdsTable(ads,bm){
   const {col,dir}=sortState;
   const sorted=[...ads].sort((a,b)=>{
@@ -1001,7 +1001,7 @@ function renderAllAdsTable(ads,bm){
     if(typeof av==='string')av=av.toLowerCase(),bv=(b[col]??'').toLowerCase();
     return dir==='asc'?(av>bv?1:av<bv?-1:0):(av<bv?1:av>bv?-1:0);
   });
-  const groupLabel={rising:'Rising â',declining:'Declining â',pause:'Pause â ',solid:'Solid â',monitor:'Monitor ð',insufficient:'Too Early'};
+  const groupLabel={rising:'Rising \u2191',declining:'Declining \u2193',pause:'Pause \u26A0',solid:'Solid \u2705',monitor:'Monitor \u{1F440}',insufficient:'Too Early'};
   const groupCls={rising:'gb-rising',declining:'gb-declining',pause:'gb-pause',solid:'gb-solid',monitor:'gb-monitor',insufficient:'gb-insufficient'};
   const tbody=document.getElementById('allAdsTbody');
   if(!tbody)return;
@@ -1010,7 +1010,7 @@ function renderAllAdsTable(ads,bm){
     const cplCls=!ad.avgCpl?'cpl-gray':ad.avgCpl<(bm||99)*0.88?'cpl-green':ad.avgCpl>(bm||0)*1.3?'cpl-red':'cpl-yellow';
     const hCls=!ad.avgHook?'hook-ok':ad.avgHook>=HOOK_HOT?'hook-hot':ad.avgHook<HOOK_COLD?'hook-cold':'hook-ok';
     const fCls=ad.funnel==='TOF'?'funnel-tof':ad.funnel==='MOF'?'funnel-mof':ad.funnel==='BOF'?'funnel-bof':'funnel-na';
-    const shortName=ad.name.length>40?ad.name.slice(0,40)+'â¦':ad.name;
+    const shortName=ad.name.length>40?ad.name.slice(0,40)+'\u2026':ad.name;
     return`<tr>
       <td><span class="ad-name-cell" title="${ad.name}">${shortName}</span></td>
       <td class="td-center"><span class="grp-badge ${groupCls[ad.group]}">${groupLabel[ad.group]}</span></td>
@@ -1018,11 +1018,11 @@ function renderAllAdsTable(ads,bm){
       <td>${ad.product}</td>
       <td>${ad.angle}</td>
       <td class="td-center"><span class="${fCls}">${ad.funnel}</span></td>
-      <td class="td-center"><span class="obj-badge ${isView?'obj-view':'obj-msg'}">${isView?'â¶ VIEW':'ð¬ MSG'}</span></td>
+      <td class="td-center"><span class="obj-badge ${isView?'obj-view':'obj-msg'}">${isView?'\u25B6 VIEW':'\u{1F4AC} MSG'}</span></td>
       <td class="td-right">RM ${ad.spend.toFixed(0)}</td>
-      <td class="td-right">${isView?'â':(ad.avgCpl?`<span class="cpl-chip ${cplCls}">RM${ad.avgCpl.toFixed(2)}</span>`:'â')}</td>
-      <td class="td-right">${ad.avgHook?`<span class="hook-chip ${hCls}">${ad.avgHook.toFixed(1)}%</span>`:'â'}</td>
-      <td class="td-right">${ad.leads>0?Math.round(ad.leads):'â'}</td>
+      <td class="td-right">${isView?'\u2014':(ad.avgCpl?`<span class="cpl-chip ${cplCls}">RM${ad.avgCpl.toFixed(2)}</span>`:'\u2014')}</td>
+      <td class="td-right">${ad.avgHook?`<span class="hook-chip ${hCls}">${ad.avgHook.toFixed(1)}%</span>`:'\u2014'}</td>
+      <td class="td-right">${ad.leads>0?Math.round(ad.leads):'\u2014'}</td>
       <td class="td-right">${ad.clicks}</td>
       <td class="td-right">${ad.freq.toFixed(1)}</td>
       <td><span class="sig ${ad.status==='ACTIVE'?'sig-active':'sig-paused'}">${ad.status}</span></td>
@@ -1045,7 +1045,7 @@ function attachSortHandlers(){
   if(initTh)initTh.classList.add('sort-desc');
 }
 
-// ââ CHARTS ââââââââââââââââââââââââââââââââââââââââââââââââââââ
+// \u2500\u2500 CHARTS \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
 function drawCplChart(data,bm){
   if(charts.cpl)charts.cpl.destroy();
   const ctx=document.getElementById('cplChart');if(!ctx)return;
@@ -1079,7 +1079,7 @@ function drawGroupChart(G){
 
 function showError(msg){
   document.getElementById('main').innerHTML=`<div class="state-msg">
-    <h3>â ï¸ Could not load data</h3>
+    <h3>\u26A0\uFE0F Could not load data</h3>
     <p>Deploy Web App with access = <strong>Anyone</strong>.<br><br>
     <span style="font-size:10px;color:#94a3b8">${msg}</span></p></div>`;
 }
